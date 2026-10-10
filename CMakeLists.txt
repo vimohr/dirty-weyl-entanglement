@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(entanglement_data LANGUAGES CXX)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(OpenMP REQUIRED)
+add_library(entanglement_backend SHARED cpp/half_filling.cpp)
+target_compile_features(entanglement_backend PRIVATE cxx_std_17)
+target_link_libraries(entanglement_backend PRIVATE Eigen3::Eigen OpenMP::OpenMP_CXX)

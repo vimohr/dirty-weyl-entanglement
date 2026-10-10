@@ -1,0 +1,266 @@
+{
+  "zenodo_doi": null,
+  "zenodo_record_url": null,
+  "description": "Original local files for the future Zenodo record. Hashes refer to these archived bytes, not newly generated HDF5 files.",
+  "files": [
+    {
+      "filename": "entanglment_spectrum_1b.h5",
+      "source_path_in_parent": "entanglment_spectrum_1b.h5",
+      "size_bytes": 1730048,
+      "sha256": "a19cdbb64e8f0427dd5c7db941e06c1688a209d1b69a9b181a0f4296c9571abe",
+      "datasets": {
+        "eigvals": {
+          "shape": [
+            3600,
+            60
+          ],
+          "dtype": "float64"
+        }
+      },
+      "attributes": {},
+      "parameters": {}
+    },
+    {
+      "filename": "entanglement_spectrum_1c.h5",
+      "source_path_in_parent": "entanglement_spectrum_1c.h5",
+      "size_bytes": 18064,
+      "sha256": "1bfe963382fac507e36c4874b838d42fc5d9a7df5be62561763465bfa2d64dc1",
+      "datasets": {
+        "eigvals": {
+          "shape": [
+            2,
+            1000
+          ],
+          "dtype": "float64"
+        },
+        "w_array": {
+          "shape": [
+            2
+          ],
+          "dtype": "float64"
+        }
+      },
+      "attributes": {},
+      "parameters": {
+        "w_array": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "filename": "half_filling_data_20260519_134201.h5",
+      "source_path_in_parent": "half_filling_results/half_filling_data_20260519_134201.h5",
+      "size_bytes": 3283288520,
+      "sha256": "88f22b418a0beb80e2046effbc2be08c4b14ae14b6d69bd4bbdf8876dd1915fc",
+      "datasets": {
+        "data": {
+          "shape": [
+            10000,
+            41
+          ],
+          "dtype": "float64"
+        },
+        "eigvals": {
+          "shape": [
+            10000,
+            41,
+            1000
+          ],
+          "dtype": "float64"
+        },
+        "w_array": {
+          "shape": [
+            41
+          ],
+          "dtype": "float64"
+        }
+      },
+      "attributes": {
+        "Ns": 10000,
+        "obc_x": false,
+        "obc_y": false,
+        "obc_z": false,
+        "timestamp": "Mon May 25 05:19:58 2026"
+      },
+      "parameters": {
+        "w_array": [
+          0,
+          0.2,
+          0.4,
+          0.6000000000000001,
+          0.8,
+          1,
+          1.2000000000000002,
+          1.4000000000000001,
+          1.6,
+          1.8,
+          2,
+          2.2,
+          2.4000000000000004,
+          2.6,
+          2.8000000000000003,
+          3,
+          3.2,
+          3.4000000000000004,
+          3.6,
+          3.8000000000000003,
+          4,
+          4.2,
+          4.4,
+          4.6000000000000005,
+          4.800000000000001,
+          5,
+          5.2,
+          5.4,
+          5.6000000000000005,
+          5.800000000000001,
+          6,
+          6.2,
+          6.4,
+          6.6000000000000005,
+          6.800000000000001,
+          7,
+          7.2,
+          7.4,
+          7.6000000000000005,
+          7.800000000000001,
+          8
+        ]
+      }
+    },
+    {
+      "filename": "half_filling_data_20260628_161626.h5",
+      "source_path_in_parent": "half_filling_data_20260628_161626.h5",
+      "size_bytes": 2619555887,
+      "sha256": "de6c4fcb043a53f80684507b0845105c5dd01b825fdad1f4bd5afe55cb0c23ed",
+      "datasets": {
+        "data": {
+          "shape": [
+            10000,
+            41
+          ],
+          "dtype": "float64"
+        },
+        "eigvals": {
+          "shape": [
+            10000,
+            41,
+            1000
+          ],
+          "dtype": "float64"
+        },
+        "mz_array": {
+          "shape": [
+            41
+          ],
+          "dtype": "float64"
+        },
+        "w_array": {
+          "shape": [
+            41
+          ],
+          "dtype": "float64"
+        }
+      },
+      "attributes": {
+        "Ns": 10000,
+        "obc_x": false,
+        "obc_y": false,
+        "obc_z": false,
+        "t": 1,
+        "t_0": 1,
+        "t_z": -1,
+        "timestamp": "Sat Jul  4 01:39:56 2026"
+      },
+      "parameters": {
+        "w_array": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "mz_array": [
+          -2,
+          -1.95,
+          -1.9,
+          -1.85,
+          -1.8,
+          -1.75,
+          -1.7,
+          -1.65,
+          -1.6,
+          -1.55,
+          -1.5,
+          -1.45,
+          -1.4,
+          -1.35,
+          -1.2999999999999998,
+          -1.25,
+          -1.2,
+          -1.15,
+          -1.1,
+          -1.0499999999999998,
+          -1,
+          -0.95,
+          -0.8999999999999999,
+          -0.8499999999999999,
+          -0.7999999999999998,
+          -0.75,
+          -0.7,
+          -0.6499999999999999,
+          -0.5999999999999999,
+          -0.5499999999999998,
+          -0.5,
+          -0.44999999999999996,
+          -0.3999999999999999,
+          -0.34999999999999987,
+          -0.2999999999999998,
+          -0.25,
+          -0.19999999999999996,
+          -0.1499999999999999,
+          -0.09999999999999987,
+          -0.04999999999999982,
+          0
+        ]
+      }
+    }
+  ]
+}

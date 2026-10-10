@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wsm-entanglement-data"
+version = "0.1.0"
+description = "Generation and provenance of disordered-semimetal entanglement spectra"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "vimohr"}]
+dependencies = ["numpy>=1.26,<3", "h5py>=3.10,<4"]
+
+[project.scripts]
+entanglement-1b = "generate_1b:main"
+entanglement-ensemble = "generate_half_filling:main"
+entanglement-1c = "extract_1c:main"
+entanglement-verify = "verify_archives:main"
+
+[tool.setuptools]
+packages = ["entanglement_data"]
+py-modules = ["generate_1b", "generate_half_filling", "extract_1c", "verify_archives"]

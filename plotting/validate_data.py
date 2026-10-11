@@ -11,11 +11,11 @@ import h5py
 import numpy as np
 
 EXPECTED = {
-    "half_filling_data_w_sweep_10000.h5": {"eigvals": (10000, 41, 1000), "data": (10000, 41), "w_array": (41,)},
-    "half_filling_data_m_sweep_10000.h5": {"eigvals": (10000, 41, 1000), "data": (10000, 41), "w_array": (41,), "mz_array": (41,)},
+    "disorder_entanglement_ensemble.h5": {"eigvals": (10000, 41, 1000), "data": (10000, 41), "w_array": (41,)},
+    "mass_entanglement_ensemble.h5": {"eigvals": (10000, 41, 1000), "data": (10000, 41), "w_array": (41,), "mz_array": (41,)},
     "clean_data_vs_mz.h5": {"eigvals": (1, 41, 1000), "data": (1, 41), "w_array": (41,), "mz_array": (41,)},
-    "entanglement_spectrum_1b.h5": {"eigvals": (3600, 60)},
-    "entanglement_spectrum_1c.h5": {"eigvals": (2, 1000), "w_array": (2,)},
+    "clean_entanglement_spectrum.h5": {"eigvals": (3600, 60)},
+    "example_entanglement_spectra.h5": {"eigvals": (2, 1000), "w_array": (2,)},
 }
 
 
@@ -61,13 +61,13 @@ def validate_hdf(path, expected, full, batch_size):
             a = f[key][:]
             if not np.all(np.isfinite(a)):
                 result["errors"].append(f"Nonfinite values in {key}")
-        if path.name == "half_filling_data_w_sweep_10000.h5":
+        if path.name == "disorder_entanglement_ensemble.h5":
             axes_ok = np.allclose(f["w_array"][:], np.arange(41) * 0.2, rtol=0, atol=1e-12)
-        elif path.name in {"half_filling_data_m_sweep_10000.h5", "clean_data_vs_mz.h5"}:
-            ww = 2 if path.name.startswith("half") else 0
+        elif path.name in {"mass_entanglement_ensemble.h5", "clean_data_vs_mz.h5"}:
+            ww = 2 if path.name == "mass_entanglement_ensemble.h5" else 0
             axes_ok = (np.allclose(f["mz_array"][:], np.linspace(-2, 0, 41), rtol=0, atol=1e-12)
                        and np.allclose(f["w_array"][:], ww, rtol=0, atol=1e-12))
-        elif path.name == "entanglement_spectrum_1c.h5":
+        elif path.name == "example_entanglement_spectra.h5":
             axes_ok = np.allclose(f["w_array"][:], [0, 2], rtol=0, atol=1e-12)
         else:
             axes_ok = True
@@ -129,7 +129,8 @@ def validate_dos(root):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1] / "data",
+                        help="Data directory (default: repository data/)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--full", action="store_true", help="Read every eigenvalue; default samples large spectra")
     parser.add_argument("--batch-size", type=int, default=313)

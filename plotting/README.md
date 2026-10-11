@@ -22,7 +22,8 @@ Put the inputs listed below in one directory, with the DOS tables in its
 python plotting/reconstruct_available_figures.py --root data --output data/reconstructed_figures
 ~~~
 
-`--root` selects the data directory. `--output` selects the output directory;
+`--root` selects the data directory, defaulting to the repository's `data/`
+directory. `--output` selects the output directory;
 its default is `reconstructed_figures/` inside the data directory. Select
 individual figures with `--figures`, for example:
 
@@ -39,34 +40,17 @@ no C++ build.
 
 | Figure | Function | Input file and fields | Processing |
 | --- | --- | --- | --- |
-| 1(b) | `figure1b` | `entanglement_spectrum_1b.h5`: `eigvals` | Reshape the `(3600, 60)` clean spectrum to `(kz, ky, occupation)` for `L=60`, center the momentum grid on zero and plot the occupations against `kz`. |
-| 1(c) | `figure1c` | `entanglement_spectrum_1c.h5`: `eigvals`, `w_array` | Plot sorted occupations with zero-based indices 485–515 for `W=0` and the stored `W=2` realization. |
-| 2 | `edos` | `half_filling_data_w_sweep_10000.h5`: `eigvals`, `w_array` | Pool eigenvalues across realizations at `W=1, 2, 3, 3.8, 4.4` and compute normalized EDOS histograms on `[0, 1]`. |
-| 3 | `entropy_figures` | `half_filling_data_w_sweep_10000.h5`: `eigvals`, `w_array` | Compute disorder-averaged entropies of orders 1, 2 and 3, shade the mean plus/minus population variance and plot the local exponents of their changes from `W=0`. |
-| 4 | `edos` | `half_filling_data_m_sweep_10000.h5`: `eigvals`, `mz_array` | Compute normalized EDOS histograms at `m=0, -0.6, -1.1, -1.2, -1.6` in the fixed-`W=2` mass sweep. |
+| 1(b) | `figure1b` | `clean_entanglement_spectrum.h5`: `eigvals` | Reshape the `(3600, 60)` clean spectrum to `(kz, ky, occupation)` for `L=60`, center the momentum grid on zero and plot the occupations against `kz`. |
+| 1(c) | `figure1c` | `example_entanglement_spectra.h5`: `eigvals`, `w_array` | Plot sorted occupations with zero-based indices 485–515 for `W=0` and the stored `W=2` realization. |
+| 2 | `edos` | `disorder_entanglement_ensemble.h5`: `eigvals`, `w_array` | Pool eigenvalues across realizations at `W=1, 2, 3, 3.8, 4.4` and compute normalized EDOS histograms on `[0, 1]`. |
+| 3 | `entropy_figures` | `disorder_entanglement_ensemble.h5`: `eigvals`, `w_array` | Compute disorder-averaged entropies of orders 1, 2 and 3, shade the mean plus/minus population variance and plot the local exponents of their changes from `W=0`. |
+| 4 | `edos` | `mass_entanglement_ensemble.h5`: `eigvals`, `mz_array` | Compute normalized EDOS histograms at `m=0, -0.6, -1.1, -1.2, -1.6` in the fixed-`W=2` mass sweep. |
 | 5 | `figure5` | `DoS_data/dos_m{m:.1f}_W{W:.1f}.dat`: energy and average DOS columns | Plot the DOS against energy for the `m=0` disorder sweep and the `W=2` mass sweep. |
-| 6 | `entropy_figures` | `half_filling_data_w_sweep_10000.h5`: `eigvals`, `w_array` | Compute disorder-averaged Rényi entropies of orders 10, 20, 30, 40 and 50 and their local exponents. |
+| 6 | `entropy_figures` | `disorder_entanglement_ensemble.h5`: `eigvals`, `w_array` | Compute disorder-averaged Rényi entropies of orders 10, 20, 30, 40 and 50 and their local exponents. |
 
-The plotting scripts use the following names for the four entanglement inputs.
-They correspond to the descriptive filenames used by the generators and archive
-manifest:
-
-| Plotting input filename | Generator/archive filename |
-| --- | --- |
-| `entanglement_spectrum_1b.h5` | `clean_entanglement_spectrum.h5` |
-| `entanglement_spectrum_1c.h5` | `example_entanglement_spectra.h5` |
-| `half_filling_data_w_sweep_10000.h5` | `disorder_entanglement_ensemble.h5` |
-| `half_filling_data_m_sweep_10000.h5` | `mass_entanglement_ensemble.h5` |
-
-If `data/` contains the descriptive filenames, create the plotting aliases from
-the repository root:
-
-~~~sh
-ln -s clean_entanglement_spectrum.h5 data/entanglement_spectrum_1b.h5
-ln -s example_entanglement_spectra.h5 data/entanglement_spectrum_1c.h5
-ln -s disorder_entanglement_ensemble.h5 data/half_filling_data_w_sweep_10000.h5
-ln -s mass_entanglement_ensemble.h5 data/half_filling_data_m_sweep_10000.h5
-~~~
+The four entanglement input filenames match the generator defaults in the
+[repository dataset table](../README.md#datasets) and archive manifest.
+Download the files into `data/` under these names.
 
 For Fig. 5(a), the script selects `m=0` and
 `W=1, 2, 3, 3.3, 3.5, 3.7, 3.8, 3.9, 4, 4.1`. For Figs. 5(b) and 5(c), it

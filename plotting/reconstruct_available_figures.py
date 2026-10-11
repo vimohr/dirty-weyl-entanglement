@@ -54,7 +54,7 @@ def save_plot(fig, out, name):
 
 
 def figure1b(root, out):
-    with h5py.File(root / "entanglement_spectrum_1b.h5", "r") as f:
+    with h5py.File(root / "clean_entanglement_spectrum.h5", "r") as f:
         x = checked_xi(f["eigvals"][:])
     if x.shape != (3600, 60):
         raise ValueError("Expected eigvals shape (3600,60), ky varying fastest")
@@ -72,7 +72,7 @@ def figure1b(root, out):
 
 def figure1c(root, out):
     # Both standalone spectra match the published source spectra exactly.
-    with h5py.File(root / "entanglement_spectrum_1c.h5", "r") as f:
+    with h5py.File(root / "example_entanglement_spectra.h5", "r") as f:
         w = f["w_array"][:]
         index = np.flatnonzero(np.isclose(w, 2.0))
         if len(index) != 1:
@@ -127,7 +127,7 @@ def edos(root, out, filename, parameter, targets, bins, name, batch_size):
 
 
 def entropy_figures(root, out, requested, batch_size):
-    with h5py.File(root / "half_filling_data_w_sweep_10000.h5", "r") as f:
+    with h5py.File(root / "disorder_entanglement_ensemble.h5", "r") as f:
         w = f["w_array"][:]
         nr, nw, _ = f["eigvals"].shape
         samples = np.empty((nr, nw, len(ORDERS)))
@@ -198,7 +198,8 @@ def figure5(root, out):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1] / "data",
+                        help="Data directory (default: repository data/)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--figures", nargs="+", choices=["1b", "1c", "2", "3", "4", "5", "6"],
                         default=["1b", "1c", "2", "3", "4", "5", "6"])
@@ -217,10 +218,10 @@ def main():
     if "1c" in args.figures:
         figure1c(args.root, out)
     if "2" in args.figures:
-        edos(args.root, out, "half_filling_data_w_sweep_10000.h5", "w_array",
+        edos(args.root, out, "disorder_entanglement_ensemble.h5", "w_array",
              [1, 2, 3, 3.8, 4.4], args.bins2, "figure2", args.batch_size)
     if "4" in args.figures:
-        edos(args.root, out, "half_filling_data_m_sweep_10000.h5", "mz_array",
+        edos(args.root, out, "mass_entanglement_ensemble.h5", "mz_array",
              [0, -0.6, -1.1, -1.2, -1.6], args.bins4, "figure4", args.batch_size)
     if "5" in args.figures:
         figure5(args.root, out)

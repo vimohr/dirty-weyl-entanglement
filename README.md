@@ -134,8 +134,8 @@ python plotting/reconstruct_available_figures.py --root data --output data/recon
 ~~~
 
 Place the inputs in `data/` using the filenames listed in the
-[plotting guide](plotting/README.md). The guide includes a mapping from the
-generator filenames, per-figure data fields, processing details and commands
+[plotting guide](plotting/README.md), which match the generator defaults above.
+The guide includes per-figure data fields, processing details and commands
 for selecting figures and validating the inputs. The script saves PNG plots
 and CSV tables; it reads the archived data directly and needs no C++ build.
 

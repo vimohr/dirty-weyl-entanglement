@@ -1,8 +1,8 @@
 # Historical source snapshots
 
-These seven files document the origins of the four archived datasets and the
-supported C++ backend. They were copied from the parent research workspace
-without editing their contents. Use the top-level generators for new calculations.
+These seven files are preserved snapshots of the original research code. They
+document the origins of the four archived datasets and the supported C++ backend.
+Use the top-level generators for new calculations.
 
 The filenames describe each source's role. Original names, paths, revisions
 and checksums are recorded in the
@@ -20,7 +20,4 @@ and checksums are recorded in the
 
 The old wrappers expect different C++ signatures and a library next to the
 script. Do not pair these historical wrappers with the new backend.
-Exploratory notebooks and the later experimental wrapper are omitted because
-their saved runs do not describe these four datasets. Earlier Git revisions
-retain those snapshots.
 See [provenance](../docs/provenance.md) for the known gaps in execution history.

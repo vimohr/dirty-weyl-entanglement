@@ -1,17 +1,17 @@
 {
   "parent_repository": "https://github.com/vimohr/master_project",
-  "description": "Selected source snapshots documenting the four archived datasets and the supported backend. Exploratory notebooks and the later experimental wrapper are omitted. Filenames describe each snapshot; source and revision record the original names and locations. Contents are preserved byte-for-byte.",
+  "description": "Source snapshots documenting the four archived datasets and the supported backend. Filenames describe each snapshot; source and revision record the original names, locations and revisions. Contents are preserved byte-for-byte.",
   "snapshots": [
     {
       "file": "spectrum_examples_and_plots.py",
       "source": "quick_plot.py",
-      "revision": "working tree at repository preparation",
+      "revision": "working-tree snapshot",
       "sha256": "37ed9ccc2f391e0e349557cb6834950b61038b03434cf5058139e9ec84d13c72"
     },
     {
       "file": "clean_spectrum_calculation.py",
       "source": "quickie.py",
-      "revision": "working tree at repository preparation",
+      "revision": "working-tree snapshot",
       "sha256": "2521daaa6d7f85859e112099a973ee647b5fd8fdcd1d8d6115cd4ce612103f35"
     },
     {
@@ -23,7 +23,7 @@
     {
       "file": "entanglement_backend_working_tree.cpp",
       "source": "python_files/testvi_cpp.cpp",
-      "revision": "working tree at repository preparation",
+      "revision": "working-tree snapshot",
       "sha256": "c91b8a58c44c9c2a184cd24f39bfa00e8e42b31ae83f3d85260a7f69d2a3f5e2"
     },
     {

@@ -1,14 +1,13 @@
 # Model and data layouts
 
-This document and the archive manifest cover the four entanglement HDF5 files.
-Data for the other paper figures, including the DOS data underlying
-Figs. 1(a) and 5, will be included in the same
-[Zenodo dataset record](https://doi.org/10.5281/zenodo.23300020); see the
-[repository scope](../README.md).
+This document and the archive manifest describe the four entanglement HDF5
+files associated with the [Zenodo dataset record](https://doi.org/10.5281/zenodo.23300020).
+See the [plotting guide](../plotting/README.md) for the figure-to-file mapping
+and the layout of the DOS tables.
 
 ## Dataset filenames
 
-The generators and planned Zenodo upload use the descriptive names below.
+The generators and archive manifest use the descriptive names below.
 The archive verifier also accepts the historical names, including the corrected
 alias `entanglement_spectrum_1b.h5` for the original misspelled clean-spectrum file.
 
@@ -59,9 +58,6 @@ The original file has no attributes. New files add model parameters, version and
 axis-order attributes while keeping the dataset name and layout.
 The historical filename and its corrected spelling are accepted aliases in the
 archive manifest; all three names identify the same original bytes.
-The similarly named historical file under the parent repository's `python_files/`
-has shape `(10,10,10)` and is a different calculation; it is not part of the
-four-file archive manifest.
 
 ## Disorder sweep: disorder_entanglement_ensemble.h5
 
@@ -77,9 +73,6 @@ three false `obc_*` flags and a completion timestamp.
 The timestamp in the historical filename was chosen before the long run; the stored
 timestamp was written at completion.
 New files also store the fixed mass grid and the additional generation metadata.
-The file's historical location in the research workspace is
-`half_filling_results/half_filling_data_20260519_134201.h5`; the download layout
-places it next to the other three files without that directory prefix.
 
 ## Two-spectrum extract: example_entanglement_spectra.h5
 

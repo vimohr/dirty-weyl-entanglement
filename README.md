@@ -1,6 +1,6 @@
 # Entanglement signatures of topological phase transitions in a dirty Weyl semimetal
 
-Data generation scripts accompanying [arXiv:2607.26660](https://arxiv.org/abs/2607.26660)
+Data generation and plotting code accompanying [arXiv:2607.26660](https://arxiv.org/abs/2607.26660)
 by Vinícius Mohr, Shunji
 Tsuchiya and András L. Szabó. The repository includes Python generators, an
 Eigen/OpenMP backend, plotting scripts and metadata for the four original
@@ -12,8 +12,7 @@ The HDF5 data record is separate from this code repository.
 The generators focus on the paper's main topic, the entanglement spectrum.
 The density of states (DOS) computations underlying Figs. 1(a) and 5 use
 standard kernel polynomial methods (KPM; Appendix A). The corresponding
-generation code is available on request. The Zenodo upload will include data
-for all paper figures, including these DOS results. The [plotting guide](plotting/README.md)
+generation code is available on request. The [plotting guide](plotting/README.md)
 maps the plotting functions to their figures, input files and numerical processing.
 
 ## Datasets
@@ -25,8 +24,8 @@ maps the plotting functions to their figures, input files and numerical processi
 | `example_entanglement_spectra.h5` | `python extract_example_entanglement_spectra.py` | `(2, 1000)` |
 | `mass_entanglement_ensemble.h5` | `python generate_entanglement_ensemble.py --preset m-sweep` | `(10000, 41, 1000)` |
 
-These descriptive names are the defaults for new calculations and the names
-to use for the Zenodo upload. The archive verifier also accepts the historical
+These descriptive names identify the archived datasets and are the defaults for
+new calculations. The archive verifier also accepts the historical
 figure-based and timestamped filenames. See
 [data layouts and parameters](docs/data_layouts.md) for the original-name mapping,
 model and file schemas.
@@ -144,7 +143,6 @@ and CSV tables; it reads the archived data directly and needs no C++ build.
 - [Plotting guide](plotting/README.md): figure functions, input filenames, numerical processing and output tables.
 - [Data documentation](docs/data_layouts.md): model, parameters, dataset layouts and historical filenames.
 - [Provenance](docs/provenance.md): source mapping, RNG policy and numerical validation.
-- [Publication guide](docs/publishing.md): GitHub releases, Zenodo upload and checksum checks.
 - [Historical sources](historical_sources/README.md): seven small source snapshots retained for provenance.
 - [Archive manifest](metadata/archived_data_manifest.json) and [SHA256SUMS](metadata/SHA256SUMS): original-file checksums.
 

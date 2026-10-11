@@ -4,7 +4,7 @@
   "paper_url": "https://arxiv.org/abs/2607.26660",
   "paper_doi": "10.48550/arXiv.2607.26660",
   "code_repository_url": "https://github.com/vimohr/dirty-weyl-entanglement",
-  "description": "Four archived entanglement datasets associated with Zenodo DOI 10.5281/zenodo.23300020. Descriptive filenames are used for publication; filename_aliases and source_path_in_parent preserve the historical names. Hashes refer to the archived bytes, not newly generated HDF5 files.",
+  "description": "Four archived entanglement datasets associated with Zenodo DOI 10.5281/zenodo.23300020. Filenames identify the archived datasets; filename_aliases and source_path_in_parent record their historical names and locations. Hashes refer to the archived bytes, not newly generated HDF5 files.",
   "files": [
     {
       "filename": "clean_entanglement_spectrum.h5",

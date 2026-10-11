@@ -1,13 +1,12 @@
 # Source provenance and reproducibility
 
-The selected source snapshots come from
-[vimohr/master_project](https://github.com/vimohr/master_project). They were
-collected locally before preparing this independent repository.
+The historical source snapshots originate in
+[vimohr/master_project](https://github.com/vimohr/master_project).
 [historical_source_manifest.json](../metadata/historical_source_manifest.json) records their hashes
 and distinguishes Git snapshots from the working-tree copies.
-Some working-tree files contained changes that had not been committed. Only
-the seven sources documenting these datasets and the supported backend are
-included in `historical_sources/`.
+The seven snapshots in `historical_sources/` document the datasets and the
+supported backend. Working-tree snapshots can include changes beyond the
+committed revisions.
 
 ## Source-to-dataset mapping
 
@@ -26,10 +25,6 @@ The historical scripts contain disabled blocks, plots and paths intended for the
 parent workspace. The supported top-level scripts supply the complete generation
 interface, build instructions and command-line settings.
 
-The exploratory notebooks and a later experimental wrapper were removed from
-the current tree because their saved inputs and parameter grids describe other
-runs. They remain available in earlier Git revisions of this repository.
-
 ## Numerical calculation
 
 The clean spectrum generator uses the transverse-momentum decomposition in
@@ -43,9 +38,8 @@ degenerate Weyl-node momentum.
 The new C++ kernel is derived from `historical_sources/entanglement_backend_working_tree.cpp`.
 It retains the periodic-boundary Bloch/Fourier construction, the scalar site
 disorder, the lowest-half occupation rule, the half-space cut, and the base-2
-entropy with its endpoint threshold. Unrelated entropy-difference calculations
-and open-boundary branches were removed because the archived datasets all use
-periodic boundaries.
+entropy with its endpoint threshold. The supported backend uses periodic
+boundaries, matching the archived datasets.
 
 The new interface builds the clean Hamiltonian once, streams the ensemble to
 HDF5 in batches, checks solver failures, and exposes a configurable seed.
@@ -53,7 +47,8 @@ It does not require a compiled library from the parent repository.
 The default batch size is eight realizations; `--batch-size` controls the output
 buffer. Each worker diagonalizes dense complex matrices of size up to
 `2000 x 2000` for the archived `L=10` ensembles, so choose `--threads` to fit the
-machine's memory. The complete output is published after all batches finish.
+machine's memory. Each output file is completed atomically after all batches
+finish.
 
 ## Random draws
 
@@ -88,9 +83,9 @@ metadata, missing files, filename aliases and the original parent-workspace
 layout. Source snapshots and the clean-spectrum reference fixture are checked
 against their recorded hashes.
 
-During preparation, the complete `L=60` spectrum was regenerated. All 3,600
-blocks, including the projected Weyl-node blocks, matched the existing archive
-within `4e-15` after preserving the legacy arithmetic grouping.
+Regenerating the complete `L=60` spectrum reproduced all 3,600 blocks, including
+the projected Weyl-node blocks, within `4e-15` of the archived values after
+preserving the legacy arithmetic grouping.
 Extracting 1c from the original disorder ensemble reproduced both archived
 occupation arrays exactly. The `L=10` clean 1c spectrum matched the union
 of clean momentum blocks within `8e-14`. Selected entropies from both
@@ -98,17 +93,16 @@ archived ensembles agreed with the stored occupations within `1e-13`.
 These checks support the model and data mapping; they do not establish recovery
 of every historical random draw.
 
-The full 10,000-realization ensembles were not rerun while preparing the
-repository. The provided examples and tests use small lattices and ensembles.
+The full 10,000-realization ensembles were not regenerated for these generator
+checks. The provided examples and tests use small lattices and ensembles.
 
-The original 12 numerical tests passed with Python 3.11.14 / NumPy 2.2.5 / h5py 3.13.0
-and Python 3.14.2 / NumPy 2.5.3 / h5py 3.16.0. The local C++ build used
-GNU C++ 14.2.0. GitHub Actions is configured to build and run the suite on Ubuntu
-with Python 3.10, 3.11 and 3.14 and check the installed command-line entry points.
+The 17-test suite passed with a fresh C++ build and editable Python installation
+using Python 3.11.14 / NumPy 2.4.6 / h5py 3.16.0. Numerical checks also passed
+with Python 3.11.14 / NumPy 2.2.5 / h5py 3.13.0 and Python 3.14.2 / NumPy 2.5.3 /
+h5py 3.16.0. The C++ compiler was GNU C++ 14.2.0. All four installed commands
+were checked from outside the source directory, including both small ensemble
+presets and extraction. All four original archive files passed byte-size,
+SHA-256, schema, grid and attribute checks against the manifest.
 
-The expanded 17-test suite also passed in a clean source copy with a fresh C++
-build and editable Python installation using Python 3.11.14 / NumPy 2.4.6 /
-h5py 3.16.0. All four installed commands were exercised from outside that source
-copy, including both small ensemble presets and extraction. All four original
-archive files passed byte-size, SHA-256, schema, grid and attribute checks against
-the manifest.
+GitHub Actions is configured to build and run the suite on Ubuntu with
+Python 3.10, 3.11 and 3.14 and check the installed command-line entry points.

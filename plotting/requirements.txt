@@ -1,0 +1,5 @@
+# Packages for the validation and reconstruction scripts; Python 3.10 or later.
+# Lower bounds, not a lockfile for the authors' original simulation environment.
+numpy>=1.26
+h5py>=3.10
+matplotlib>=3.8

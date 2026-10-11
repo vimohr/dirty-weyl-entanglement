@@ -3,7 +3,8 @@
 Data generation scripts accompanying [arXiv:2607.26660](https://arxiv.org/abs/2607.26660)
 by Vinícius Mohr, Shunji
 Tsuchiya and András L. Szabó. The repository includes Python generators, an
-Eigen/OpenMP backend and metadata for the four original entanglement HDF5 files.
+Eigen/OpenMP backend, plotting scripts and metadata for the four original
+entanglement HDF5 files.
 
 **Zenodo dataset DOI:** [10.5281/zenodo.23300020](https://doi.org/10.5281/zenodo.23300020).
 The HDF5 data record is separate from this code repository.
@@ -12,8 +13,8 @@ The generators focus on the paper's main topic, the entanglement spectrum.
 The density of states (DOS) computations underlying Figs. 1(a) and 5 use
 standard kernel polynomial methods (KPM; Appendix A). The corresponding
 generation code is available on request. The Zenodo upload will include data
-for all paper figures, including these DOS results, to support
-reproducing every plot with simple postprocessing and plotting.
+for all paper figures, including these DOS results. The [plotting guide](plotting/README.md)
+maps the plotting functions to their figures, input files and numerical processing.
 
 ## Datasets
 
@@ -120,8 +121,27 @@ This selects realization zero at `W=0` and `W=2`, without drawing new disorder.
 New simulations have different metadata and samples, so they are not expected
 to pass original-archive verification.
 
+## Generate the plots
+
+The scripts in `plotting/` generate Figs. 1(b), 1(c) and 2–6 from the archived
+entanglement spectra and DOS tables. Plotting requires Python 3.10 or newer,
+NumPy, h5py and Matplotlib. From the repository root, install the plotting
+dependencies in your Python environment and run:
+
+~~~sh
+python -m pip install -r plotting/requirements.txt
+python plotting/reconstruct_available_figures.py --root data --output data/reconstructed_figures
+~~~
+
+Place the inputs in `data/` using the filenames listed in the
+[plotting guide](plotting/README.md). The guide includes a mapping from the
+generator filenames, per-figure data fields, processing details and commands
+for selecting figures and validating the inputs. The script saves PNG plots
+and CSV tables; it reads the archived data directly and needs no C++ build.
+
 ## Reference
 
+- [Plotting guide](plotting/README.md): figure functions, input filenames, numerical processing and output tables.
 - [Data documentation](docs/data_layouts.md): model, parameters, dataset layouts and historical filenames.
 - [Provenance](docs/provenance.md): source mapping, RNG policy and numerical validation.
 - [Publication guide](docs/publishing.md): GitHub releases, Zenodo upload and checksum checks.

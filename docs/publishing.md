@@ -7,9 +7,9 @@ The data will be uploaded to a separate Zenodo dataset record:
 
 ## GitHub code repository
 
-The code repository contains the generators, C++ backend, documentation, MIT
-license, citation metadata, source snapshots and validation workflow. HDF5 files
-and compiled binaries are excluded.
+The code repository contains the generators, C++ backend, plotting scripts,
+documentation, MIT license, citation metadata, source snapshots and validation
+workflow. HDF5 files and compiled binaries are excluded.
 
 Push reviewed commits from the repository root:
 
@@ -43,8 +43,8 @@ Include the data for the remaining paper figures in the same record, including
 the DOS data underlying Figs. 1(a) and 5, computed using standard kernel
 polynomial methods (KPM). The repository focuses on entanglement data
 generation; the corresponding KPM generation code is available on request.
-Add a short file-to-figure guide describing axes, units and any postprocessing
-needed to recreate the plots from the data.
+Include `plotting/README.md` as the file-to-figure guide. It describes the plotting
+functions, input filenames, units, numerical processing and output tables.
 
 Include `metadata/archived_data_manifest.json`, `metadata/SHA256SUMS` and `docs/data_layouts.md` with the data
 so the schema and checksums remain available independently of GitHub.
@@ -75,13 +75,14 @@ Suggested record description:
 > two-spectrum W=0/W=2 extract, and a 10,000-realization mass sweep at
 > L=10 and W=2. The record also includes data for the remaining paper figures,
 > including the DOS data underlying Figs. 1(a) and 5, computed using standard
-> kernel polynomial methods (KPM), to support reproducing every plot from the
-> archived data. The corresponding generation code is available on request.
+> kernel polynomial methods (KPM). The corresponding generation code is available
+> on request. The plotting guide maps the archived data to Figs. 1(b), 1(c) and
+> 2–6 and describes the commands and numerical processing used to generate them.
 > The accompanying manifest lists SHA-256 hashes and dataset layouts for the
 > four entanglement files.
 > The linked code repository supplies entanglement generation commands and
-> documents the distinction between original archived samples and newly
-> seeded simulations.
+> plotting scripts and documents the distinction between original archived
+> samples and newly seeded simulations.
 
 Add the code repository URL under the record's related works or links, and
 identify the code commit or release used for the documented method. Supply the

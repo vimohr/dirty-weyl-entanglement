@@ -75,7 +75,10 @@ The test suite compares small clean spectra to an independent full NumPy
 calculation, checks an archived sample of the 1b blocks, checks the two preset
 grids and HDF5 layouts, and exercises extraction and output protection.
 It also verifies that task-based generation is unchanged by worker count and
-batch splitting.
+batch splitting. Archive checks cover altered spectra, incorrect parameter grids,
+metadata, missing files, filename aliases and the original parent-workspace
+layout. Source snapshots and the clean-spectrum reference fixture are checked
+against their recorded hashes.
 
 During preparation, the complete `L=60` spectrum was regenerated. All 3,600
 blocks, including the projected Weyl-node blocks, matched the existing archive
@@ -90,7 +93,14 @@ of every historical random draw.
 The full 10,000-realization ensembles were not rerun while preparing the
 repository. The provided examples and tests use small lattices and ensembles.
 
-The 12 automated tests passed with Python 3.11.14 / NumPy 2.2.5 / h5py 3.13.0
+The original 12 numerical tests passed with Python 3.11.14 / NumPy 2.2.5 / h5py 3.13.0
 and Python 3.14.2 / NumPy 2.5.3 / h5py 3.16.0. The local C++ build used
-GNU C++ 14.2.0. GitHub Actions is configured to build and run the small suite
-on Ubuntu with Python 3.11 after the repository is published.
+GNU C++ 14.2.0. GitHub Actions builds and runs the suite on Ubuntu with Python
+3.10, 3.11 and 3.14 and checks the installed command-line entry points.
+
+The expanded 17-test suite also passed in a clean source copy with a fresh C++
+build and editable Python installation using Python 3.11.14 / NumPy 2.4.6 /
+h5py 3.16.0. All four installed commands were exercised from outside that source
+copy, including both small ensemble presets and extraction. All four original
+archive files passed byte-size, SHA-256, schema, grid and attribute checks against
+the manifest.

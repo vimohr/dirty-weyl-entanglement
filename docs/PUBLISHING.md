@@ -1,22 +1,23 @@
 # Publish the code and data
 
-This folder is prepared as an independent local Git repository on branch
+This folder is an independent Git repository on branch
 `main`. Its Git history is separate from the surrounding master-project
-repository. No GitHub remote or Zenodo record is configured yet.
+repository. Its public GitHub destination is
+[vimohr/h5_generation_scripts](https://github.com/vimohr/h5_generation_scripts).
+The data will be uploaded to a separate Zenodo dataset record.
 
 ## GitHub code repository
 
-1. Create an empty GitHub repository under the desired owner and name.
-   The local repository already contains the README, license and ignore rules.
-2. From this folder, add that repository as the remote and push:
+The code repository contains the generators, C++ backend, documentation, MIT
+license, citation metadata, source snapshots and validation workflow. HDF5 files
+and compiled binaries are excluded. To push later updates from this folder:
 
 ~~~sh
-git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git
 git push -u origin main
 ~~~
 
-3. Check that the included GitHub Actions workflow succeeds on GitHub.
-4. Tag the reviewed version and create its release:
+Check that the included GitHub Actions workflow succeeds, then tag the version
+used for the Zenodo description and create a GitHub release:
 
 ~~~sh
 git tag v0.1.0
@@ -31,15 +32,21 @@ another project after its remote URL exists.
 
 Create a dataset upload containing these original files:
 
-- `entanglment_spectrum_1b.h5`
-- `half_filling_data_20260519_134201.h5`
-- `entanglement_spectrum_1c.h5`
-- `half_filling_data_20260628_161626.h5`
+| File to upload | Location relative to the original research workspace | Bytes |
+| --- | --- | ---: |
+| `entanglment_spectrum_1b.h5` | `entanglment_spectrum_1b.h5` | 1,730,048 |
+| `entanglement_spectrum_1c.h5` | `entanglement_spectrum_1c.h5` | 18,064 |
+| `half_filling_data_20260519_134201.h5` | `half_filling_results/half_filling_data_20260519_134201.h5` | 3,283,288,520 |
+| `half_filling_data_20260628_161626.h5` | `half_filling_data_20260628_161626.h5` | 2,619,555,887 |
 
-Include `metadata/archive_manifest.json` and `docs/DATA.md` with the data
+Include `metadata/archive_manifest.json`, `metadata/SHA256SUMS` and `docs/DATA.md` with the data
 so the schema and checksums remain available independently of GitHub.
 Preserve the original HDF5 bytes if using this manifest; recompressing or
 rewriting a file changes its hash.
+Upload each file directly under its basename so users can download all four into
+one directory. The total HDF5 payload is 5,904,592,519 bytes (about 5.90 GB).
+If correcting the 1b spelling to `entanglement_spectrum_1b.h5`, also change that
+filename in the uploaded `SHA256SUMS`; the manifest verifier accepts either name.
 
 Use Zenodo's
 [new-upload documentation](https://help.zenodo.org/docs/deposit/create-new-upload/)
@@ -62,10 +69,17 @@ Suggested record description:
 > documents the distinction between original archived samples and newly
 > seeded simulations.
 
+Add the code repository URL under the record's related works or links, and
+identify the code commit or release used for the documented method. Supply the
+actual creators, affiliations and data license when preparing the record.
+`CITATION.cff` identifies the software; the dataset should receive its own
+citation through the Zenodo record.
+
 After reserving or publishing the actual record, update the two null fields in
 `metadata/archive_manifest.json`, add the actual Zenodo link in `README.md`,
 and add the GitHub repository/release link to the Zenodo record.
 Commit these links and tag the release used for the data description.
+Keep the dataset DOI separate from any future DOI for a software release.
 No placeholder DOI is used by the generation or verification code.
 
 ## Verify the publication payload
@@ -74,10 +88,12 @@ Before publishing the original data, run:
 
 ~~~sh
 python verify_archives.py --directory /path/to/the/four/files
-git ls-files '*.h5' '*.so' '*.pdf'
+git ls-files '*.h5' '*.hdf5' '*.so' '*.dylib' '*.dll' '*.pdf'
 ~~~
 
 The first command must succeed; the second should print no files.
+For the original workspace layout, use
+`python verify_archives.py --directory .. --parent-layout`.
 For a new calculation, archive its outputs with a new manifest and describe
 the recorded seed and generation settings instead of claiming the original
 archive hashes.

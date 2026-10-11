@@ -36,6 +36,8 @@ gives one row per `kz`.
 
 The original file has no attributes. New files add model parameters, version and
 axis-order attributes while keeping the dataset name and layout.
+The corrected filename `entanglement_spectrum_1b.h5` is an accepted alias in the
+archive manifest; both names identify the same original bytes.
 The similarly named legacy file under the parent repository's `python_files/`
 has shape `(10,10,10)` and is a different calculation; it is not part of the
 four-file archive manifest.
@@ -54,6 +56,9 @@ three false `obc_*` flags and a completion timestamp.
 The timestamp in the filename was chosen before the long run; the stored
 timestamp was written at completion.
 New files also store the fixed mass grid and the additional generation metadata.
+The file's historical location in the research workspace is
+`half_filling_results/half_filling_data_20260519_134201.h5`; the download layout
+places it next to the other three files without that directory prefix.
 
 ## Two-spectrum extract: entanglement_spectrum_1c.h5
 

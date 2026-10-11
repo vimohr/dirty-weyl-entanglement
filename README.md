@@ -1,4 +1,4 @@
-# Entanglement spectra in disordered semimetals
+# HDF5 generation scripts for entanglement spectra
 
 This repository generates the HDF5 datasets used for the clean and disordered
 entanglement spectra. It includes the Python entry points, the Eigen/OpenMP
@@ -20,7 +20,12 @@ Once the record is published, its link should be added here.
 | `half_filling_data_20260628_161626.h5` | `python generate_half_filling.py --preset m-sweep` | `(10000, 41, 1000)` |
 
 The missing second “e” in `entanglment_spectrum_1b.h5` is the spelling of the
-original archive file and is retained for compatibility.
+original archive file and is retained for compatibility. The verifier also
+accepts the corrected spelling, `entanglement_spectrum_1b.h5`, if that is the
+name used in the Zenodo upload. Renaming the file preserves its checksum.
+The original May ensemble lives at
+`half_filling_results/half_filling_data_20260519_134201.h5` in the research
+workspace; the Zenodo download layout uses its basename directly in `data/`.
 The filename timestamps identify the original datasets; they are not the dates
 of new calculations.
 
@@ -42,9 +47,11 @@ sudo apt-get update
 sudo apt-get install -y python3-venv cmake g++ libeigen3-dev
 ~~~
 
-Run the following commands from the repository root:
+Clone the repository, then install and build from its root:
 
 ~~~sh
+git clone https://github.com/vimohr/h5_generation_scripts.git
+cd h5_generation_scripts
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -56,7 +63,8 @@ python -m unittest discover -s tests -v
 The tests compare the C++ spectrum against a small independent NumPy calculation,
 check the clean spectrum against archived reference blocks, exercise both ensemble
 presets and extraction, and check reproducibility across worker counts and batches.
-They do not require the large archive files.
+They also check archive verification and the integrity of the preserved source
+snapshots. They do not require the large archive files.
 
 All scripts can be run directly; an editable installation is optional:
 
@@ -125,10 +133,23 @@ with the filenames listed above. Verify them with:
 python verify_archives.py --directory data
 ~~~
 
-The verifier checks file sizes, SHA-256 hashes, dataset shapes and dtypes against
-the originals recorded in the manifest. `--structure-only` skips the byte-size
-and hash checks. Newly generated files have new metadata and disorder samples,
-so their hashes are expected to differ from the archive.
+The verifier checks file sizes, SHA-256 hashes, dataset shapes, dtypes, parameter
+grids and recorded attributes against the originals in the manifest.
+`--structure-only` skips the byte-size and hash checks; it still checks the grids
+and recorded attributes. Newly generated files have new metadata and disorder
+samples, so they are not expected to pass original-archive verification.
+
+To check the originals in the parent research workspace without copying the
+large files, run this from the repository root:
+
+~~~sh
+python verify_archives.py --directory .. --parent-layout
+~~~
+
+For a checksum-only check of a flat download with the original filenames,
+download `SHA256SUMS` from Zenodo alongside the HDF5 files and run
+`sha256sum -c SHA256SUMS` in that directory. The checksum file is also provided
+in [metadata/SHA256SUMS](metadata/SHA256SUMS).
 
 To recover the exact two spectra shown in panel 1c from a downloaded disorder
 ensemble:
@@ -154,3 +175,10 @@ Data files, build products, virtual environments and generated figures are ignor
 by Git. The source repository is licensed under [MIT](LICENSE).
 See [the publication guide](docs/PUBLISHING.md) for the remaining record links and
 release steps.
+
+## Citation
+
+[CITATION.cff](CITATION.cff) supplies the software citation metadata displayed by
+GitHub. Cite the separate Zenodo dataset DOI when using the archived HDF5 data,
+and this code repository when describing the generation method. The dataset DOI
+will be linked here after the data upload is available.

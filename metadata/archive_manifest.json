@@ -5,6 +5,7 @@
   "files": [
     {
       "filename": "entanglment_spectrum_1b.h5",
+      "filename_aliases": ["entanglement_spectrum_1b.h5"],
       "source_path_in_parent": "entanglment_spectrum_1b.h5",
       "size_bytes": 1730048,
       "sha256": "a19cdbb64e8f0427dd5c7db941e06c1688a209d1b69a9b181a0f4296c9571abe",

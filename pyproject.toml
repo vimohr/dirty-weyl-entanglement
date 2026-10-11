@@ -12,6 +12,10 @@ license = {file = "LICENSE"}
 authors = [{name = "vimohr"}]
 dependencies = ["numpy>=1.26,<3", "h5py>=3.10,<4"]
 
+[project.urls]
+Repository = "https://github.com/vimohr/h5_generation_scripts"
+Issues = "https://github.com/vimohr/h5_generation_scripts/issues"
+
 [project.scripts]
 entanglement-1b = "generate_1b:main"
 entanglement-ensemble = "generate_half_filling:main"

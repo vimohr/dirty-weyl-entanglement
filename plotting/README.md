@@ -53,7 +53,7 @@ The four entanglement input filenames match the generator defaults in the
 Download the files into `data/` under these names.
 
 For Fig. 5(a), the script selects `m=0` and
-`W=1, 2, 3, 3.3, 3.5, 3.7, 3.8, 3.9, 4, 4.1`. For Figs. 5(b) and 5(c), it
+`W=1, 2, 3, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1`. For Figs. 5(b) and 5(c), it
 selects `W=2` and respectively `m=0, -0.6, -0.7, -0.8, -0.9` and
 `m=-1, -1.1, -1.2, -1.3, -1.4, -1.5, -1.6`. Filenames use one decimal place,
 for example `DoS_data/dos_m0.0_W2.0.dat`. The two columns contain `E/t` and
@@ -65,6 +65,8 @@ The EDOS density in each bin is its count divided by the total number of
 eigenvalues at that parameter point and the bin width, so the histogram
 integrates to one. Fig. 2 uses 119 bins and Fig. 4 uses 100 bins by default;
 change them with `--bins2` and `--bins4`.
+The logarithmic EDOS axis spans `1e-3` to `100` in Fig. 2 and `1e-4` to `100`
+in Fig. 4, matching the paper's displayed ranges.
 
 Entropies are calculated from `eigvals` using natural logarithms, giving values
 in nats. Order 1 is the von Neumann entropy; the other orders use
@@ -101,3 +103,17 @@ python plotting/validate_data.py --root data --output data/validation.json
 The default mode samples the large spectra and checks the smaller arrays in
 full. Add `--full` to read every eigenvalue and `--hash` to record SHA-256 hashes
 of the input files in the JSON report.
+
+## Figure checks
+
+Figs. 1(b), 1(c) and 2–6 were generated using the original spectra, the complete
+10,000-realization disorder and mass ensembles, and the archived DOS tables,
+then compared visually with the accompanying paper. The spectral features,
+EDOS peak evolution, entropy curves and DOS trends agree with the paper;
+colors, markers, typography and line interpolation can differ.
+
+Full numerical validation checked every eigenvalue in both ensembles and all
+1,239 DOS tables. The four original entanglement files retain their recorded
+SHA-256 hashes. Each EDOS histogram retains all 10,000,000 eigenvalues at its
+parameter point and integrates to one. The Fig. 4 display range and the
+Fig. 5(a) disorder selections follow the published panels.

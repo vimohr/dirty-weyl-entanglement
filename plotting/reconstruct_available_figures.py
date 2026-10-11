@@ -114,7 +114,7 @@ def edos(root, out, filename, parameter, targets, bins, name, batch_size):
     for j, (ax, target) in enumerate(zip(axes, targets)):
         ax.stairs(density[j], edges, fill=True, color="0.65")
         ax.set_yscale("log")
-        ax.set(xlim=(0, 1), ylim=((1e-3, 100) if name == "figure2" else (1e-9, 100)),
+        ax.set(xlim=(0, 1), ylim=((1e-3, 100) if name == "figure2" else (1e-4, 100)),
                title=f"{'W' if parameter == 'w_array' else 'm'}={target:g}")
         ax.set_xticks([0, 0.5, 1], ["0", "1/2", "1"])
     axes[0].set_ylabel(r"$\nu_S$")
@@ -175,7 +175,7 @@ def entropy_figures(root, out, requested, batch_size):
 
 def figure5(root, out):
     fig, axes = plt.subplots(1, 3, figsize=(11, 3.3))
-    selections = [(0, [1, 2, 3, 3.3, 3.5, 3.7, 3.8, 3.9, 4, 4.1]),
+    selections = [(0, [1, 2, 3, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1]),
                   ([0, -0.6, -0.7, -0.8, -0.9], 2),
                   ([-1, -1.1, -1.2, -1.3, -1.4, -1.5, -1.6], 2)]
     rows = []

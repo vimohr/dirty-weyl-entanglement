@@ -5,6 +5,21 @@ Data for the other paper figures, including the DOS data underlying
 Figs. 1(a) and 5, will be included in the same Zenodo upload; see the
 [repository scope](../README.md).
 
+## Dataset filenames
+
+The generators and planned Zenodo upload use the descriptive names below.
+The archive verifier also accepts the historical names, including the corrected
+alias `entanglement_spectrum_1b.h5` for the original misspelled clean-spectrum file.
+
+| Dataset filename | Historical filename |
+| --- | --- |
+| `clean_entanglement_spectrum.h5` | `entanglment_spectrum_1b.h5` |
+| `disorder_entanglement_ensemble.h5` | `half_filling_data_20260519_134201.h5` |
+| `example_entanglement_spectra.h5` | `entanglement_spectrum_1c.h5` |
+| `mass_entanglement_ensemble.h5` | `half_filling_data_20260628_161626.h5` |
+
+## Model
+
 The clean Bloch Hamiltonian is
 
 ~~~text
@@ -27,7 +42,7 @@ The entropy is `-sum[xi*log2(xi) + (1-xi)*log2(1-xi)]`.
 As in the legacy implementation, occupations within `1e-10` of zero or one
 contribute zero to the entropy. Stored occupations are not rounded or clipped.
 
-## Clean spectrum: entanglment_spectrum_1b.h5
+## Clean spectrum: clean_entanglement_spectrum.h5
 
 | Dataset | Original shape | Meaning |
 | --- | --- | --- |
@@ -41,13 +56,13 @@ gives one row per `kz`.
 
 The original file has no attributes. New files add model parameters, version and
 axis-order attributes while keeping the dataset name and layout.
-The corrected filename `entanglement_spectrum_1b.h5` is an accepted alias in the
-archive manifest; both names identify the same original bytes.
-The similarly named legacy file under the parent repository's `python_files/`
+The historical filename and its corrected spelling are accepted aliases in the
+archive manifest; all three names identify the same original bytes.
+The similarly named historical file under the parent repository's `python_files/`
 has shape `(10,10,10)` and is a different calculation; it is not part of the
 four-file archive manifest.
 
-## Disorder sweep: half_filling_data_20260519_134201.h5
+## Disorder sweep: disorder_entanglement_ensemble.h5
 
 | Dataset | Original shape | Meaning |
 | --- | --- | --- |
@@ -58,14 +73,14 @@ four-file archive manifest.
 The cubic size is `L=10`; `m_z=0` is fixed by the legacy model and is not
 stored in this original file. The original attributes are `Ns=10000`,
 three false `obc_*` flags and a completion timestamp.
-The timestamp in the filename was chosen before the long run; the stored
+The timestamp in the historical filename was chosen before the long run; the stored
 timestamp was written at completion.
 New files also store the fixed mass grid and the additional generation metadata.
 The file's historical location in the research workspace is
 `half_filling_results/half_filling_data_20260519_134201.h5`; the download layout
 places it next to the other three files without that directory prefix.
 
-## Two-spectrum extract: entanglement_spectrum_1c.h5
+## Two-spectrum extract: example_entanglement_spectra.h5
 
 | Dataset | Original shape | Meaning |
 | --- | --- | --- |
@@ -79,7 +94,7 @@ New extracts record the source basename, realization and parameter indices.
 Extraction accepts both the old format without `mz_array` and the new
 format, and requires the selected mass to be zero.
 
-## Mass sweep: half_filling_data_20260628_161626.h5
+## Mass sweep: mass_entanglement_ensemble.h5
 
 | Dataset | Original shape | Meaning |
 | --- | --- | --- |
@@ -100,6 +115,6 @@ and UTC completion time. They are gzip-compressed in realization/parameter
 chunks; compression does not change the stored numerical values.
 
 The four original entanglement files are identified by the hashes in
-[archive_manifest.json](../metadata/archive_manifest.json). Together they total
+[archived_data_manifest.json](../metadata/archived_data_manifest.json). Together they total
 about 5.90 GB; the raw `eigvals` array of each ensemble contains 3.28 GB of
 float64 values before compression.

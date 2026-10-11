@@ -1,4 +1,4 @@
-// Derived from legacy/testvi_cpp_current.cpp; see docs/PROVENANCE.md.
+// Derived from historical_sources/entanglement_backend_working_tree.cpp; see docs/provenance.md.
 // The model and half-filling cut are unchanged. The task RNG is now explicit.
 #include <Eigen/Dense>
 #include <omp.h>

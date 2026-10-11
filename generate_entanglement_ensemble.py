@@ -3,7 +3,7 @@
 
 import argparse
 
-from entanglement_data.ensemble import generate
+from entanglement_data.entanglement_ensemble import generate
 
 
 def main():
@@ -17,7 +17,7 @@ def main():
     parser.add_argument("--rng", choices=["task", "legacy-thread"], default="task",
                         help="task is independent of scheduling; legacy-thread follows the old RNG policy")
     parser.add_argument("--backend", help="Path to the compiled shared library")
-    parser.add_argument("--output", help="Default: data/ plus the archived filename for the preset")
+    parser.add_argument("--output", help="Default: data/disorder_entanglement_ensemble.h5 or data/mass_entanglement_ensemble.h5")
     args = parser.parse_args()
     try:
         output = generate(args.preset, args.output, args.size, args.samples,

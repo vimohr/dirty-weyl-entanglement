@@ -34,7 +34,7 @@ jobs:
       - name: Check installed commands outside the repository
         working-directory: /tmp
         run: |
-          entanglement-1b --help
+          entanglement-clean --help
           entanglement-ensemble --help
-          entanglement-1c --help
+          entanglement-extract --help
           entanglement-verify --help

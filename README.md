@@ -17,22 +17,23 @@ reproducing every plot with simple postprocessing and plotting.
 
 ## Datasets
 
-| Original filename | Command | Spectrum shape |
+| Dataset filename | Command | Spectrum shape |
 | --- | --- | --- |
-| `entanglment_spectrum_1b.h5` | `python generate_1b.py` | `(3600, 60)` |
-| `half_filling_data_20260519_134201.h5` | `python generate_half_filling.py --preset w-sweep` | `(10000, 41, 1000)` |
-| `entanglement_spectrum_1c.h5` | `python extract_1c.py` | `(2, 1000)` |
-| `half_filling_data_20260628_161626.h5` | `python generate_half_filling.py --preset m-sweep` | `(10000, 41, 1000)` |
+| `clean_entanglement_spectrum.h5` | `python generate_clean_spectrum.py` | `(3600, 60)` |
+| `disorder_entanglement_ensemble.h5` | `python generate_entanglement_ensemble.py --preset w-sweep` | `(10000, 41, 1000)` |
+| `example_entanglement_spectra.h5` | `python extract_example_spectra.py` | `(2, 1000)` |
+| `mass_entanglement_ensemble.h5` | `python generate_entanglement_ensemble.py --preset m-sweep` | `(10000, 41, 1000)` |
 
-The original 1b filename contains a spelling error. Verification also accepts
-`entanglement_spectrum_1b.h5`. The filename timestamps identify the archived
-runs; new calculations keep those default names for compatibility.
-See [data layouts and parameters](docs/DATA.md) for the model and file schemas.
+These descriptive names are the defaults for new calculations and the names
+to use for the Zenodo upload. The archive verifier also accepts the historical
+figure-based and timestamped filenames. See
+[data layouts and parameters](docs/data_layouts.md) for the original-name mapping,
+model and file schemas.
 
 Fresh ensembles reproduce the model and parameter grids with a recorded seed.
 The historical worker scheduling and exact software revisions are not fully
 recorded, so use the Zenodo files for the exact original disorder samples.
-See [provenance and reproducibility](docs/PROVENANCE.md).
+See [provenance and reproducibility](docs/provenance.md).
 
 ## Install and build
 
@@ -59,19 +60,21 @@ python -m unittest discover -s tests -v
 ~~~
 
 Keep the editable installation so the compiled backend and archive manifest
-remain available. It also installs `entanglement-1b`, `entanglement-ensemble`,
-`entanglement-1c` and `entanglement-verify`. The tests use small calculations and
+remain available. It also installs `entanglement-clean`, `entanglement-ensemble`,
+`entanglement-extract` and `entanglement-verify`. The tests use small calculations and
 included reference values; the large HDF5 files are not required.
+After updating a checkout, rerun `python -m pip install -e .` to refresh the
+installed command names.
 
 ## Run a small example
 
 These examples exercise all three generators with smaller lattices and ensembles:
 
 ~~~sh
-python generate_1b.py --size 4 --output data/smoke_1b.h5
-python generate_half_filling.py --preset w-sweep --size 4 --samples 2 --threads 2 --output data/smoke_w.h5
-python extract_1c.py --source data/smoke_w.h5 --output data/smoke_1c.h5
-python generate_half_filling.py --preset m-sweep --size 4 --samples 2 --threads 2 --output data/smoke_m.h5
+python generate_clean_spectrum.py --size 4 --output data/small_clean_spectrum.h5
+python generate_entanglement_ensemble.py --preset w-sweep --size 4 --samples 2 --threads 2 --output data/small_disorder_ensemble.h5
+python extract_example_spectra.py --source data/small_disorder_ensemble.h5 --output data/small_example_spectra.h5
+python generate_entanglement_ensemble.py --preset m-sweep --size 4 --samples 2 --threads 2 --output data/small_mass_ensemble.h5
 ~~~
 
 ## Generate the full datasets
@@ -84,10 +87,10 @@ a compute server; choose `--threads` to fit the available memory.
 ~~~sh
 export OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1
-python generate_1b.py
-python generate_half_filling.py --preset w-sweep --samples 10000 --threads 8 --seed 1337
-python extract_1c.py --source data/half_filling_data_20260519_134201.h5
-python generate_half_filling.py --preset m-sweep --samples 10000 --threads 8 --seed 1337
+python generate_clean_spectrum.py
+python generate_entanglement_ensemble.py --preset w-sweep --samples 10000 --threads 8 --seed 1337
+python extract_example_spectra.py --source data/disorder_entanglement_ensemble.h5
+python generate_entanglement_ensemble.py --preset m-sweep --samples 10000 --threads 8 --seed 1337
 ~~~
 
 The disorder preset sweeps `W` from 0 to 8 at `m_z=0`; the mass preset sweeps
@@ -103,13 +106,13 @@ and verify them against the recorded checksums, layouts, parameter grids
 and attributes:
 
 ~~~sh
-python verify_archives.py --directory data
+python verify_archived_data.py --directory data
 ~~~
 
 To extract the exact spectra for panel 1c from the downloaded disorder ensemble:
 
 ~~~sh
-python extract_1c.py --source data/half_filling_data_20260519_134201.h5 --output data/extracted_1c.h5
+python extract_example_spectra.py --source data/disorder_entanglement_ensemble.h5 --output data/extracted_example_spectra.h5
 ~~~
 
 This selects realization zero at `W=0` and `W=2`, without drawing new disorder.
@@ -118,11 +121,11 @@ to pass original-archive verification.
 
 ## Reference
 
-- [Data documentation](docs/DATA.md): model, parameters, dataset layouts and historical filenames.
-- [Provenance](docs/PROVENANCE.md): source mapping, RNG policy and numerical validation.
-- [Publication guide](docs/PUBLISHING.md): GitHub releases, Zenodo upload and checksum checks.
-- [Historical sources](legacy/README.md): seven small source snapshots retained for provenance.
-- [Archive manifest](metadata/archive_manifest.json) and [SHA256SUMS](metadata/SHA256SUMS): original-file checksums.
+- [Data documentation](docs/data_layouts.md): model, parameters, dataset layouts and historical filenames.
+- [Provenance](docs/provenance.md): source mapping, RNG policy and numerical validation.
+- [Publication guide](docs/publishing.md): GitHub releases, Zenodo upload and checksum checks.
+- [Historical sources](historical_sources/README.md): seven small source snapshots retained for provenance.
+- [Archive manifest](metadata/archived_data_manifest.json) and [SHA256SUMS](metadata/SHA256SUMS): original-file checksums.
 
 The code is licensed under [MIT](LICENSE). [CITATION.cff](CITATION.cff) supplies
 software citation metadata. Cite the separate Zenodo dataset DOI when using the

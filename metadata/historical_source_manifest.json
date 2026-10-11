@@ -1,45 +1,45 @@
 {
   "parent_repository": "https://github.com/vimohr/master_project",
-  "description": "Selected source snapshots documenting the four archived datasets and the supported backend. Exploratory notebooks and the later experimental wrapper are omitted.",
+  "description": "Selected source snapshots documenting the four archived datasets and the supported backend. Exploratory notebooks and the later experimental wrapper are omitted. Filenames describe each snapshot; source and revision record the original names and locations. Contents are preserved byte-for-byte.",
   "snapshots": [
     {
-      "file": "quick_plot.py",
+      "file": "spectrum_examples_and_plots.py",
       "source": "quick_plot.py",
       "revision": "working tree at repository preparation",
       "sha256": "37ed9ccc2f391e0e349557cb6834950b61038b03434cf5058139e9ec84d13c72"
     },
     {
-      "file": "quickie.py",
+      "file": "clean_spectrum_calculation.py",
       "source": "quickie.py",
       "revision": "working tree at repository preparation",
       "sha256": "2521daaa6d7f85859e112099a973ee647b5fd8fdcd1d8d6115cd4ce612103f35"
     },
     {
-      "file": "run_half_filling_cdf3307.py",
+      "file": "mass_sweep_cdf3307.py",
       "source": "python_files/run_half_filling.py",
       "revision": "cdf3307",
       "sha256": "dba9b4e32b78611bad7229321a56f9299223df34e5fa0dd4c0a592380cb6b88d"
     },
     {
-      "file": "testvi_cpp_current.cpp",
+      "file": "entanglement_backend_working_tree.cpp",
       "source": "python_files/testvi_cpp.cpp",
       "revision": "working tree at repository preparation",
       "sha256": "c91b8a58c44c9c2a184cd24f39bfa00e8e42b31ae83f3d85260a7f69d2a3f5e2"
     },
     {
-      "file": "testvi_cpp_cdb8984.cpp",
+      "file": "entanglement_backend_cdb8984.cpp",
       "source": "python_files/testvi_cpp.cpp",
       "revision": "cdb8984",
       "sha256": "e82110f0f24469304d28d942f3a35ea9c56c1d23ebfb8c1977646e2478f6bde1"
     },
     {
-      "file": "testvi_cpp_cdf3307.cpp",
+      "file": "entanglement_backend_cdf3307.cpp",
       "source": "python_files/testvi_cpp.cpp",
       "revision": "cdf3307",
       "sha256": "fe30ed652b8efadb6d0528db6c2f2ff87f8ef9b52d3b2ca026bea21fd9a0b2d1"
     },
     {
-      "file": "run_half_filling_cdb8984.py",
+      "file": "disorder_sweep_cdb8984.py",
       "source": "python_files/run_half_filling.py",
       "revision": "cdb8984",
       "sha256": "47054bbb2d219ca777139932ca27e601513d7a38856ecbf4a91e4eda613fb6f0"

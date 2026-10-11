@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from .io import lattice_size, model_attributes, new_h5
+from .hdf5_io import lattice_size, model_attributes, new_h5
 
 SX = np.array([[0, 1], [1, 0]], dtype=complex)
 SY = np.array([[0, -1j], [1j, 0]], dtype=complex)
@@ -34,12 +34,12 @@ def block_spectrum(size, iy, iz, mass=0.0, transform=None):
     _, vectors = np.linalg.eigh(real_h)
     # Fill exactly half the orbitals, including the legacy choice at zero modes.
     restricted = vectors[:size, :size]
-    # This conjugation convention follows quickie.py; the eigenvalues are real.
+    # Follow historical_sources/clean_spectrum_calculation.py; eigenvalues are real.
     correlation = restricted.conj() @ restricted.T
     return np.linalg.eigvalsh(correlation)
 
 
-def generate(size=60, mass=0.0, output="data/entanglment_spectrum_1b.h5"):
+def generate(size=60, mass=0.0, output="data/clean_entanglement_spectrum.h5"):
     size = lattice_size(size)
     if not np.isfinite(mass):
         raise ValueError("Mass must be finite")
@@ -51,7 +51,7 @@ def generate(size=60, mass=0.0, output="data/entanglment_spectrum_1b.h5"):
             for iy in range(size):
                 spectrum[iy + size * iz] = block_spectrum(size, iy, iz, mass, transform)
             print(f"kz blocks complete: {iz + 1}/{size}", flush=True)
-        model_attributes(handle, size, "generate_1b.py")
+        model_attributes(handle, size, "generate_clean_spectrum.py")
         handle.attrs["m_z"] = mass
         handle.attrs["axis_order"] = "row = iy + L*iz; columns = sorted occupations"
     return output

@@ -3,20 +3,24 @@
 The selected source snapshots come from
 [vimohr/master_project](https://github.com/vimohr/master_project). They were
 collected locally before preparing this independent repository.
-[source_snapshots.json](../metadata/source_snapshots.json) records their hashes
+[historical_source_manifest.json](../metadata/historical_source_manifest.json) records their hashes
 and distinguishes Git snapshots from the working-tree copies.
 Some working-tree files contained changes that had not been committed. Only
 the seven sources documenting these datasets and the supported backend are
-included in `legacy/`.
+included in `historical_sources/`.
 
 ## Source-to-dataset mapping
 
 | Dataset | Evidence in the preserved sources |
 | --- | --- |
-| `entanglment_spectrum_1b.h5` at `L=60` | `legacy/quickie.py` contains the matching block calculation and HDF5 writer, both disabled in its current snapshot. |
-| `half_filling_data_20260519_134201.h5` | `legacy/run_half_filling_cdb8984.py` has the matching HDF5 format, although its saved parameter grid differs; `testvi_cpp_cdb8984.cpp` supplies the historical fixed-mass calculation. The exact producing revision is not recorded. |
-| `entanglement_spectrum_1c.h5` | `legacy/quick_plot.py` explicitly reads that disorder-sweep filename and writes rows `[0,0]` and `[0,10]`. Both rows were verified against the original files. |
-| `half_filling_data_20260628_161626.h5` | `legacy/run_half_filling_cdf3307.py` uses `Ns=10000`, `W=2`, and the matching 41-point mass grid. The exact producing revision is not recorded. |
+| `clean_entanglement_spectrum.h5` at `L=60` | `historical_sources/clean_spectrum_calculation.py` contains the matching block calculation and HDF5 writer, both disabled in its current snapshot. |
+| `disorder_entanglement_ensemble.h5` | `historical_sources/disorder_sweep_cdb8984.py` has the matching HDF5 format, although its saved parameter grid differs; `entanglement_backend_cdb8984.cpp` supplies the historical fixed-mass calculation. The exact producing revision is not recorded. |
+| `example_entanglement_spectra.h5` | `historical_sources/spectrum_examples_and_plots.py` explicitly reads the original disorder-sweep filename and writes rows `[0,0]` and `[0,10]`. Both rows were verified against the original files. |
+| `mass_entanglement_ensemble.h5` | `historical_sources/mass_sweep_cdf3307.py` uses `Ns=10000`, `W=2`, and the matching 41-point mass grid. The exact producing revision is not recorded. |
+
+The [data layouts](data_layouts.md) map these descriptive dataset filenames to
+the original archived filenames. Historical source filenames describe their
+roles; the source manifest records their original paths and revisions.
 
 The historical scripts contain disabled blocks, plots and paths intended for the
 parent workspace. The supported top-level scripts supply the complete generation
@@ -28,14 +32,15 @@ runs. They remain available in earlier Git revisions of this repository.
 
 ## Numerical calculation
 
-The new 1b generator uses the transverse-momentum decomposition in `quickie.py`.
+The clean spectrum generator uses the transverse-momentum decomposition in
+`historical_sources/clean_spectrum_calculation.py`.
 It constructs each `2L x 2L` Hamiltonian by the same Fourier convention, fills
 exactly `L` orbitals and preserves the flattened block order.
 Parentheses in the mass term preserve the legacy arithmetic grouping; changing
 that grouping can change which nearly zero-energy state is occupied at a
 degenerate Weyl-node momentum.
 
-The new C++ kernel is derived from `legacy/testvi_cpp_current.cpp`.
+The new C++ kernel is derived from `historical_sources/entanglement_backend_working_tree.cpp`.
 It retains the periodic-boundary Bloch/Fourier construction, the scalar site
 disorder, the lowest-half occupation rule, the half-space cut, and the base-2
 entropy with its endpoint threshold. Unrelated entropy-difference calculations

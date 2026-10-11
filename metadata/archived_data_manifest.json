@@ -4,11 +4,14 @@
   "paper_url": "https://arxiv.org/abs/2607.26660",
   "paper_doi": "10.48550/arXiv.2607.26660",
   "code_repository_url": "https://github.com/vimohr/dirty-weyl-entanglement",
-  "description": "Original local files for the future Zenodo record. Hashes refer to these archived bytes, not newly generated HDF5 files.",
+  "description": "Four archived entanglement datasets for the future Zenodo record. Descriptive filenames are used for publication; filename_aliases and source_path_in_parent preserve the historical names. Hashes refer to the archived bytes, not newly generated HDF5 files.",
   "files": [
     {
-      "filename": "entanglment_spectrum_1b.h5",
-      "filename_aliases": ["entanglement_spectrum_1b.h5"],
+      "filename": "clean_entanglement_spectrum.h5",
+      "filename_aliases": [
+        "entanglment_spectrum_1b.h5",
+        "entanglement_spectrum_1b.h5"
+      ],
       "source_path_in_parent": "entanglment_spectrum_1b.h5",
       "size_bytes": 1730048,
       "sha256": "a19cdbb64e8f0427dd5c7db941e06c1688a209d1b69a9b181a0f4296c9571abe",
@@ -25,7 +28,7 @@
       "parameters": {}
     },
     {
-      "filename": "entanglement_spectrum_1c.h5",
+      "filename": "example_entanglement_spectra.h5",
       "source_path_in_parent": "entanglement_spectrum_1c.h5",
       "size_bytes": 18064,
       "sha256": "1bfe963382fac507e36c4874b838d42fc5d9a7df5be62561763465bfa2d64dc1",
@@ -50,10 +53,13 @@
           0,
           2
         ]
-      }
+      },
+      "filename_aliases": [
+        "entanglement_spectrum_1c.h5"
+      ]
     },
     {
-      "filename": "half_filling_data_20260519_134201.h5",
+      "filename": "disorder_entanglement_ensemble.h5",
       "source_path_in_parent": "half_filling_results/half_filling_data_20260519_134201.h5",
       "size_bytes": 3283288520,
       "sha256": "88f22b418a0beb80e2046effbc2be08c4b14ae14b6d69bd4bbdf8876dd1915fc",
@@ -131,10 +137,13 @@
           7.800000000000001,
           8
         ]
-      }
+      },
+      "filename_aliases": [
+        "half_filling_data_20260519_134201.h5"
+      ]
     },
     {
-      "filename": "half_filling_data_20260628_161626.h5",
+      "filename": "mass_entanglement_ensemble.h5",
       "source_path_in_parent": "half_filling_data_20260628_161626.h5",
       "size_bytes": 2619555887,
       "sha256": "de6c4fcb043a53f80684507b0845105c5dd01b825fdad1f4bd5afe55cb0c23ed",
@@ -264,7 +273,10 @@
           -0.04999999999999982,
           0
         ]
-      }
+      },
+      "filename_aliases": [
+        "half_filling_data_20260628_161626.h5"
+      ]
     }
   ]
 }

@@ -3,13 +3,13 @@
 
 import argparse
 
-from entanglement_data.extract import extract
+from entanglement_data.example_spectra import extract
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", default="data/half_filling_data_20260519_134201.h5")
-    parser.add_argument("--output", default="data/entanglement_spectrum_1c.h5")
+    parser.add_argument("--source", default="data/disorder_entanglement_ensemble.h5")
+    parser.add_argument("--output", default="data/example_entanglement_spectra.h5")
     parser.add_argument("--realization", type=int, default=0)
     args = parser.parse_args()
     try:

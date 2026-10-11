@@ -12,11 +12,11 @@ import unittest
 import h5py
 import numpy as np
 
-from entanglement_data.backend import Model
-from entanglement_data.clean import block_spectrum, generate as generate_clean
-from entanglement_data.ensemble import generate as generate_ensemble
-from entanglement_data.extract import extract
-from entanglement_data.io import new_h5
+from entanglement_data.cpp_backend import Model
+from entanglement_data.clean_spectrum import block_spectrum, generate as generate_clean
+from entanglement_data.entanglement_ensemble import generate as generate_ensemble
+from entanglement_data.example_spectra import extract
+from entanglement_data.hdf5_io import new_h5
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -63,7 +63,7 @@ class GenerationTests(unittest.TestCase):
             np.testing.assert_allclose(values, reference_full_spectrum(size, 0.37), atol=2e-12)
 
     def test_clean_blocks_agree_with_archived_reference(self):
-        fixture = json.loads((ROOT / "tests/fixtures/clean_archive_blocks.json").read_text())
+        fixture = json.loads((ROOT / "tests/fixtures/archived_clean_spectrum_blocks.json").read_text())
         for block in fixture["blocks"]:
             actual = block_spectrum(fixture["size"], block["iy"], block["iz"], fixture["mass"])
             np.testing.assert_allclose(actual, block["eigvals"], atol=1e-10, rtol=0)
@@ -178,7 +178,7 @@ class GenerationTests(unittest.TestCase):
     def test_cli_runs_from_outside_the_repository(self):
         output = self.directory / "cli.h5"
         result = subprocess.run(
-            [sys.executable, str(ROOT / "generate_1b.py"), "--size", "2",
+            [sys.executable, str(ROOT / "generate_clean_spectrum.py"), "--size", "2",
              "--output", str(output)],
             cwd=self.directory, capture_output=True, text=True,
         )

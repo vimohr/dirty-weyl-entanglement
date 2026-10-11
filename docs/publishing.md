@@ -33,10 +33,10 @@ Create a dataset upload containing these original entanglement files:
 
 | File to upload | Location relative to the original research workspace | Bytes |
 | --- | --- | ---: |
-| `entanglment_spectrum_1b.h5` | `entanglment_spectrum_1b.h5` | 1,730,048 |
-| `entanglement_spectrum_1c.h5` | `entanglement_spectrum_1c.h5` | 18,064 |
-| `half_filling_data_20260519_134201.h5` | `half_filling_results/half_filling_data_20260519_134201.h5` | 3,283,288,520 |
-| `half_filling_data_20260628_161626.h5` | `half_filling_data_20260628_161626.h5` | 2,619,555,887 |
+| `clean_entanglement_spectrum.h5` | `entanglment_spectrum_1b.h5` | 1,730,048 |
+| `example_entanglement_spectra.h5` | `entanglement_spectrum_1c.h5` | 18,064 |
+| `disorder_entanglement_ensemble.h5` | `half_filling_results/half_filling_data_20260519_134201.h5` | 3,283,288,520 |
+| `mass_entanglement_ensemble.h5` | `half_filling_data_20260628_161626.h5` | 2,619,555,887 |
 
 Include the data for the remaining paper figures in the same record, including
 the DOS data underlying Figs. 1(a) and 5, computed using standard kernel
@@ -45,15 +45,16 @@ generation; the corresponding KPM generation code is available on request.
 Add a short file-to-figure guide describing axes, units and any postprocessing
 needed to recreate the plots from the data.
 
-Include `metadata/archive_manifest.json`, `metadata/SHA256SUMS` and `docs/DATA.md` with the data
+Include `metadata/archived_data_manifest.json`, `metadata/SHA256SUMS` and `docs/data_layouts.md` with the data
 so the schema and checksums remain available independently of GitHub.
 Preserve the original HDF5 bytes if using this manifest; recompressing or
 rewriting a file changes its hash.
-Upload each file directly under its basename so users can download all four into
-one directory. These four entanglement files total 5,904,592,519 bytes
+Upload each original file under the descriptive name in the first column so
+users can download all four into one directory. Renaming a file preserves its
+bytes and checksum. These four entanglement files total 5,904,592,519 bytes
 (about 5.90 GB); this excludes the additional figure data.
-If correcting the 1b spelling to `entanglement_spectrum_1b.h5`, also change that
-filename in the uploaded `SHA256SUMS`; the manifest verifier accepts either name.
+`SHA256SUMS` uses these descriptive names. The manifest verifier also accepts
+the historical filenames recorded in `filename_aliases`.
 
 Use Zenodo's
 [new-upload documentation](https://help.zenodo.org/docs/deposit/create-new-upload/)
@@ -90,7 +91,7 @@ by its DOI `10.48550/arXiv.2607.26660`.
 citation through the Zenodo record.
 
 After reserving or publishing the actual record, update the two null fields in
-`metadata/archive_manifest.json`, add the actual Zenodo link in `README.md`,
+`metadata/archived_data_manifest.json`, add the actual Zenodo link in `README.md`,
 and add the GitHub repository/release link to the Zenodo record.
 Commit these links and tag the release used for the data description.
 Keep the dataset DOI separate from any future DOI for a software release.
@@ -101,7 +102,7 @@ No placeholder DOI is used by the generation or verification code.
 Before publishing the original data, run:
 
 ~~~sh
-python verify_archives.py --directory /path/to/the/four/files
+python verify_archived_data.py --directory /path/to/the/four/files
 git ls-files '*.h5' '*.hdf5' '*.so' '*.dylib' '*.dll' '*.pdf'
 ~~~
 
@@ -110,11 +111,11 @@ the second should print no files. These checks do not cover the additional
 figure data, which should have their own checksums and layout descriptions
 in the Zenodo record.
 For the original workspace layout, use
-`python verify_archives.py --directory .. --parent-layout`.
+`python verify_archived_data.py --directory .. --parent-layout`.
 `--structure-only` skips the whole-file size and hash checks while still checking
 dataset layouts, parameter grids and recorded attributes.
 
-For a checksum-only check of a flat download with the original filenames, place
+For a checksum-only check of a flat download with the published filenames, place
 `SHA256SUMS` next to the HDF5 files and run:
 
 ~~~sh

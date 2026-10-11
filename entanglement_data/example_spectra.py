@@ -5,10 +5,10 @@ from pathlib import Path
 import h5py
 import numpy as np
 
-from .io import new_h5
+from .hdf5_io import new_h5
 
 
-def extract(source, output="data/entanglement_spectrum_1c.h5", realization=0):
+def extract(source, output="data/example_entanglement_spectra.h5", realization=0):
     source = Path(source)
     with h5py.File(source, "r") as original:
         if "eigvals" not in original or "w_array" not in original:
@@ -36,7 +36,7 @@ def extract(source, output="data/entanglement_spectrum_1c.h5", realization=0):
     with new_h5(output) as handle:
         handle.create_dataset("eigvals", data=rows)
         handle.create_dataset("w_array", data=np.array([0.0, 2.0]))
-        handle.attrs["generator"] = "extract_1c.py"
+        handle.attrs["generator"] = "extract_example_spectra.py"
         handle.attrs["source_file"] = source.name
         handle.attrs["source_realization"] = realization
         handle.attrs["source_parameter_indices"] = indices

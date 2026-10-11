@@ -4,10 +4,15 @@ from pathlib import Path
 
 import numpy as np
 
-from .backend import Model
-from .io import lattice_size, model_attributes, new_h5
+from .cpp_backend import Model
+from .hdf5_io import lattice_size, model_attributes, new_h5
 
-FILENAMES = {
+DEFAULT_FILENAMES = {
+    "w-sweep": "disorder_entanglement_ensemble.h5",
+    "m-sweep": "mass_entanglement_ensemble.h5",
+}
+
+ARCHIVE_FILENAMES = {
     "w-sweep": "half_filling_data_20260519_134201.h5",
     "m-sweep": "half_filling_data_20260628_161626.h5",
 }
@@ -31,7 +36,7 @@ def generate(preset, output=None, size=10, samples=10000, seed=1337,
         raise ValueError("Samples, threads and batch size must be positive (samples < 2**31)")
     if not 0 <= seed < 2**64 or rng not in ("task", "legacy-thread"):
         raise ValueError("Seed must be a uint64 and RNG must be task or legacy-thread")
-    output = Path(output) if output is not None else Path("data") / FILENAMES[preset]
+    output = Path(output) if output is not None else Path("data") / DEFAULT_FILENAMES[preset]
     # Open the output first to reject existing files before building a model.
     with new_h5(output) as handle, Model(size, library) as model:
         modes = size**3
@@ -52,7 +57,7 @@ def generate(preset, output=None, size=10, samples=10000, seed=1337,
             "axis_order": "realization, parameter, sorted occupation",
             "entropy_log_base": 2,
             "entropy_endpoint_threshold": 1e-10,
-            "archive_parameter_filename": FILENAMES[preset],
+            "archive_parameter_filename": ARCHIVE_FILENAMES[preset],
         })
         for first in range(0, samples, batch_size):
             count = min(batch_size, samples - first)
@@ -60,5 +65,5 @@ def generate(preset, output=None, size=10, samples=10000, seed=1337,
             entropy[first:first + count] = s
             es[first:first + count] = xi
             print(f"Realizations complete: {first + count}/{samples}", flush=True)
-        model_attributes(handle, size, "generate_half_filling.py")
+        model_attributes(handle, size, "generate_entanglement_ensemble.py")
     return output

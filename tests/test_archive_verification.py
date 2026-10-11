@@ -11,7 +11,7 @@ import unittest
 import h5py
 import numpy as np
 
-from verify_archives import verify
+from verify_archived_data import verify
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -80,15 +80,16 @@ class ArchiveTests(unittest.TestCase):
         self.assertTrue(self.check_archive()[0].startswith("Missing "))
 
     def test_preserved_source_and_reference_hashes_match_metadata(self):
-        sources = json.loads((ROOT / "metadata/source_snapshots.json").read_text())
+        sources = json.loads((ROOT / "metadata/historical_source_manifest.json").read_text())
         for source in sources["snapshots"]:
             with self.subTest(file=source["file"]):
-                actual = hashlib.sha256((ROOT / "legacy" / source["file"]).read_bytes()).hexdigest()
+                actual = hashlib.sha256((ROOT / "historical_sources" / source["file"]).read_bytes()).hexdigest()
                 self.assertEqual(actual, source["sha256"])
-        archive = json.loads((ROOT / "metadata/archive_manifest.json").read_text())
-        fixture = json.loads((ROOT / "tests/fixtures/clean_archive_blocks.json").read_text())
+        archive = json.loads((ROOT / "metadata/archived_data_manifest.json").read_text())
+        fixture = json.loads((ROOT / "tests/fixtures/archived_clean_spectrum_blocks.json").read_text())
         clean = next(record for record in archive["files"]
-                     if record["filename"] == fixture["source_file"])
+                     if fixture["source_file"] in
+                     [record["filename"], *record.get("filename_aliases", [])])
         self.assertEqual(fixture["source_sha256"], clean["sha256"])
         expected_sums = "".join(f"{record['sha256']}  {record['filename']}\n"
                                 for record in archive["files"])

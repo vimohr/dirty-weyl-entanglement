@@ -55,7 +55,7 @@ def verify(directory, manifest, structure_only=False, parent_layout=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--directory", default="data", help="Folder containing the four original HDF5 files")
-    parser.add_argument("--manifest", default=str(Path(__file__).parent / "metadata/archive_manifest.json"))
+    parser.add_argument("--manifest", default=str(Path(__file__).parent / "metadata/archived_data_manifest.json"))
     parser.add_argument("--structure-only", action="store_true", help="Skip whole-file SHA-256 and byte-size checks")
     parser.add_argument("--parent-layout", action="store_true",
                         help="Use source_path_in_parent, including the historical half_filling_results/ folder")

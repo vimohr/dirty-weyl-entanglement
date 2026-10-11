@@ -1,11 +1,13 @@
 # Source provenance and reproducibility
 
-The source snapshots come from
+The selected source snapshots come from
 [vimohr/master_project](https://github.com/vimohr/master_project). They were
 collected locally before preparing this independent repository.
 [source_snapshots.json](../metadata/source_snapshots.json) records their hashes
 and distinguishes Git snapshots from the working-tree copies.
-Some working-tree files contained changes that had not been committed.
+Some working-tree files contained changes that had not been committed. Only
+the seven sources documenting these datasets and the supported backend are
+included in `legacy/`.
 
 ## Source-to-dataset mapping
 
@@ -16,16 +18,13 @@ Some working-tree files contained changes that had not been committed.
 | `entanglement_spectrum_1c.h5` | `legacy/quick_plot.py` explicitly reads that disorder-sweep filename and writes rows `[0,0]` and `[0,10]`. Both rows were verified against the original files. |
 | `half_filling_data_20260628_161626.h5` | `legacy/run_half_filling_cdf3307.py` uses `Ns=10000`, `W=2`, and the matching 41-point mass grid. The exact producing revision is not recorded. |
 
-`legacy/quick_check.ipynb` also writes the 1c filename, but its currently saved
-input is another, later dataset. A filename alone does not identify the producing
-run. `legacy/testvi.ipynb` also writes the 1b filename; its currently saved
-lattice is different from the archived `L=60` calculation.
+The historical scripts contain disabled blocks, plots and paths intended for the
+parent workspace. The supported top-level scripts supply the complete generation
+interface, build instructions and command-line settings.
 
-The legacy notebooks and scripts are evidence, rather than the supported
-generation interface: they contain disabled blocks, intermediate plots,
-assertions used to stop experiments, and paths intended for the parent workspace.
-The supported top-level scripts remove those execution dependencies and supply
-the missing build instructions and command-line settings.
+The exploratory notebooks and a later experimental wrapper were removed from
+the current tree because their saved inputs and parameter grids describe other
+runs. They remain available in earlier Git revisions of this repository.
 
 ## Numerical calculation
 
@@ -46,6 +45,10 @@ periodic boundaries.
 The new interface builds the clean Hamiltonian once, streams the ensemble to
 HDF5 in batches, checks solver failures, and exposes a configurable seed.
 It does not require a compiled library from the parent repository.
+The default batch size is eight realizations; `--batch-size` controls the output
+buffer. Each worker diagonalizes dense complex matrices of size up to
+`2000 x 2000` for the archived `L=10` ensembles, so choose `--threads` to fit the
+machine's memory. The complete output is published after all batches finish.
 
 ## Random draws
 

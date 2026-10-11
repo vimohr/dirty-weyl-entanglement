@@ -1,8 +1,6 @@
-# Publish the code and data
+# Code releases and Zenodo data
 
-This folder is an independent Git repository on branch
-`main`. Its Git history is separate from the surrounding master-project
-repository. Its public GitHub destination is
+The code repository is
 [vimohr/dirty-weyl-entanglement](https://github.com/vimohr/dirty-weyl-entanglement).
 The data will be uploaded to a separate Zenodo dataset record.
 
@@ -12,21 +10,10 @@ The code repository contains the generators, C++ backend, documentation, MIT
 license, citation metadata, source snapshots and validation workflow. HDF5 files
 and compiled binaries are excluded.
 
-For the first push, create an empty public GitHub repository named
-`dirty-weyl-entanglement` under `vimohr`. Leave GitHub's README, license and
-`.gitignore` initialization options unchecked, because those files are already
-committed locally. Run these commands inside the existing local
-`h5_generation_scripts` folder:
+Push reviewed commits from the repository root:
 
 ~~~sh
-git remote add origin https://github.com/vimohr/dirty-weyl-entanglement.git
-git push -u origin main
-~~~
-
-The local folder may keep its existing name. To push later updates:
-
-~~~sh
-git push -u origin main
+git push origin main
 ~~~
 
 Check that the included GitHub Actions workflow succeeds, then tag the version
@@ -37,9 +24,8 @@ git tag v0.1.0
 git push origin v0.1.0
 ~~~
 
-The code uses the selected MIT license. Generated HDF5 files and build products
-are excluded from Git. The repository can also be registered as a submodule in
-another project after its remote URL exists.
+The MIT license covers the code. Choose the dataset license explicitly when
+preparing the Zenodo record.
 
 ## Zenodo dataset record
 
@@ -85,6 +71,8 @@ Suggested record description:
 Add the code repository URL under the record's related works or links, and
 identify the code commit or release used for the documented method. Supply the
 actual creators, affiliations and data license when preparing the record.
+Also link the accompanying [paper](https://arxiv.org/abs/2607.26660), identified
+by its DOI `10.48550/arXiv.2607.26660`.
 `CITATION.cff` identifies the software; the dataset should receive its own
 citation through the Zenodo record.
 
@@ -107,6 +95,16 @@ git ls-files '*.h5' '*.hdf5' '*.so' '*.dylib' '*.dll' '*.pdf'
 The first command must succeed; the second should print no files.
 For the original workspace layout, use
 `python verify_archives.py --directory .. --parent-layout`.
+`--structure-only` skips the whole-file size and hash checks while still checking
+dataset layouts, parameter grids and recorded attributes.
+
+For a checksum-only check of a flat download with the original filenames, place
+`SHA256SUMS` next to the HDF5 files and run:
+
+~~~sh
+sha256sum -c SHA256SUMS
+~~~
+
 For a new calculation, archive its outputs with a new manifest and describe
 the recorded seed and generation settings instead of claiming the original
 archive hashes.

@@ -1,5 +1,6 @@
 {
   "parent_repository": "https://github.com/vimohr/master_project",
+  "description": "Selected source snapshots documenting the four archived datasets and the supported backend. Exploratory notebooks and the later experimental wrapper are omitted.",
   "snapshots": [
     {
       "file": "quick_plot.py",
@@ -8,34 +9,16 @@
       "sha256": "37ed9ccc2f391e0e349557cb6834950b61038b03434cf5058139e9ec84d13c72"
     },
     {
-      "file": "quick_check.ipynb",
-      "source": "quick_check.ipynb",
-      "revision": "working tree at repository preparation",
-      "sha256": "dba21f558281aaa9ba3c56ff1e4e3c3bc0b6f94cec052c6db7f6ada28036621c"
-    },
-    {
       "file": "quickie.py",
       "source": "quickie.py",
       "revision": "working tree at repository preparation",
       "sha256": "2521daaa6d7f85859e112099a973ee647b5fd8fdcd1d8d6115cd4ce612103f35"
     },
     {
-      "file": "run_half_filling.py",
-      "source": "python_files/run_half_filling.py",
-      "revision": "working tree at repository preparation",
-      "sha256": "87598ccb826077a00501d3016d9ce0b883b15e4b829bc4a7a53959e4e86ba1d7"
-    },
-    {
       "file": "run_half_filling_cdf3307.py",
       "source": "python_files/run_half_filling.py",
       "revision": "cdf3307",
       "sha256": "dba9b4e32b78611bad7229321a56f9299223df34e5fa0dd4c0a592380cb6b88d"
-    },
-    {
-      "file": "testvi.ipynb",
-      "source": "python_files/testvi.ipynb",
-      "revision": "working tree at repository preparation",
-      "sha256": "9a9f8bcbeb1366652f4c70a6e8519b954953ca654590cb1e1e7c4336c2021a72"
     },
     {
       "file": "testvi_cpp_current.cpp",

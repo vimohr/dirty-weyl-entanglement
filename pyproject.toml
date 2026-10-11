@@ -13,6 +13,7 @@ authors = [{name = "Vinícius Mohr"}]
 dependencies = ["numpy>=1.26,<3", "h5py>=3.10,<4"]
 
 [project.urls]
+Paper = "https://arxiv.org/abs/2607.26660"
 Repository = "https://github.com/vimohr/dirty-weyl-entanglement"
 Issues = "https://github.com/vimohr/dirty-weyl-entanglement/issues"
 

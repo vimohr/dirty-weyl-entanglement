@@ -1,8 +1,8 @@
 # Entanglement signatures of topological phase transitions in a dirty Weyl semimetal
 
 Data generation and plotting code accompanying [arXiv:2607.26660](https://arxiv.org/abs/2607.26660)
-by Vinícius Mohr, Shunji
-Tsuchiya and András L. Szabó. The repository includes Python generators, an
+by Vinícius Mohr, Shunji Tsuchiya and András L. Szabó. The paper was submitted to
+arXiv on 29 July 2026. The repository includes Python generators, an
 Eigen/OpenMP backend, plotting scripts and metadata for the four original
 entanglement HDF5 files.
 

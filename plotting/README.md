@@ -92,9 +92,8 @@ Plots are saved as `figure1b.png`, `figure1c.png` and `figure2.png` through
 `validate_data.py` checks HDF5 shapes, parameter grids, finite values, sorted
 occupations and consistency between the stored entropies and the spectra. It
 also checks the DOS tables for the grid `m=-2` to `0` and `W=0.2` to `6`, both
-in steps of `0.1`. In addition to the four entanglement inputs above, validation
-expects `clean_data_vs_mz.h5`, containing `eigvals`, `data`, `w_array` and
-`mz_array` for the clean mass sweep.
+in steps of `0.1`. Validation uses the same four entanglement inputs and DOS
+tables as the plotting code.
 
 ~~~sh
 python plotting/validate_data.py --root data --output data/validation.json

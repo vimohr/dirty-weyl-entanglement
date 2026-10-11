@@ -1,7 +1,7 @@
 cff-version: 1.2.0
-message: "Please cite the paper for the scientific method, this repository for the generation code, and the separate Zenodo record for the archived data."
+message: "Please cite the paper for the scientific method, this repository for the generation and plotting code, and the separate Zenodo record for the archived data."
 type: software
-title: "HDF5 generation scripts for entanglement spectra in disordered semimetals"
+title: "Generation and plotting code for entanglement spectra in a dirty Weyl semimetal"
 authors:
   - family-names: "Mohr"
     given-names: "Vinícius"
@@ -10,9 +10,10 @@ license: MIT
 repository-code: "https://github.com/vimohr/dirty-weyl-entanglement"
 url: "https://github.com/vimohr/dirty-weyl-entanglement"
 abstract: >-
-  Python and Eigen/OpenMP generators, archive verification, and source provenance
-  for clean and disordered half-filling entanglement spectra. The original HDF5
-  datasets have a separate Zenodo dataset DOI: 10.5281/zenodo.23300020.
+  Python and Eigen/OpenMP generators, plotting and numerical validation scripts,
+  archive verification, and source provenance for clean and disordered
+  half-filling entanglement spectra. The archived HDF5 spectra and density-of-states
+  tables have a separate Zenodo dataset DOI: 10.5281/zenodo.23300020.
 keywords:
   - entanglement spectrum
   - Weyl semimetal

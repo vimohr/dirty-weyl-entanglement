@@ -5,6 +5,25 @@ The code repository is
 The data will be uploaded to a separate Zenodo dataset record:
 [10.5281/zenodo.23300020](https://doi.org/10.5281/zenodo.23300020).
 
+## Publication order
+
+The dataset DOI is already known, so the data and code records can be prepared
+independently. The recommended order is:
+
+1. Finalize the dataset files, documentation, creators and data license, then
+   publish the dataset record.
+2. Download the published data and check the documented verification, validation
+   and plotting commands against that download. Update the README's dataset
+   availability wording once the files are public.
+3. Enable the GitHub repository in Zenodo, then publish the code release as
+   described below.
+4. Add the software DOI to the dataset record's related works and the repository
+   README and citation metadata. Link the paper and dataset from the software
+   record as well. Cite the specific released software version in the paper.
+
+Zenodo allows [metadata changes without creating a new record version](https://zenodo.org/help/versioning),
+so the dataset's link to the software DOI can be added after the code release.
+
 ## GitHub code repository
 
 The code repository contains the generators, C++ backend, plotting scripts,
@@ -17,16 +36,49 @@ Push reviewed commits from the repository root:
 git push origin main
 ~~~
 
-Check that the included GitHub Actions workflow succeeds, then tag the version
-used for the Zenodo description and create a GitHub release:
+Review the software title, description and creators in `CITATION.cff`, and keep
+its version aligned with `pyproject.toml` and the release tag. Both metadata files
+currently specify `0.1.0`. Affiliation and ORCID can be added for each creator.
+Validate the citation file with `cffconvert --validate` before releasing.
+
+The [Zenodo GitHub integration](https://help.zenodo.org/docs/github/enable-repository/)
+must be enabled before publishing the release: connect the GitHub account in
+Zenodo, open the profile menu's GitHub page, and enable
+`vimohr/dirty-weyl-entanglement`.
+
+Check that the included GitHub Actions workflow succeeds for the release commit,
+then tag the version used for the Zenodo description:
 
 ~~~sh
 git tag v0.1.0
 git push origin v0.1.0
 ~~~
 
+Publish a GitHub release for that tag with a short description of the generators,
+plotting scripts, input dataset DOI and validation performed. The connected
+Zenodo integration archives the release and creates a separate software record
+and DOI. Review the imported metadata and add the dataset and paper as related
+works. See [Zenodo's release workflow](https://help.zenodo.org/docs/github/archive-software/github-upload/).
+
+`CITATION.cff` supplies the software metadata. A `.zenodo.json` file is
+[optional](https://help.zenodo.org/docs/github/describe-software/zenodo-json/);
+it can automate related identifiers and other Zenodo-specific fields, but when
+both files are present Zenodo imports `.zenodo.json` instead of `CITATION.cff`.
+
 The MIT license covers the code. Choose the dataset license explicitly when
 preparing the Zenodo record.
+
+## GitHub About
+
+Suggested description:
+
+> Generation and plotting code for entanglement signatures of topological phase
+> transitions in a dirty Weyl semimetal.
+
+Use the [paper](https://arxiv.org/abs/2607.26660) as the website link. Suggested
+topics are `entanglement`, `weyl-semimetal`, `disorder`, `reproducible-research`
+and `scientific-computing`. The About fields help readers identify the project;
+the software's archival metadata is supplied through `CITATION.cff`.
 
 ## Zenodo dataset record
 

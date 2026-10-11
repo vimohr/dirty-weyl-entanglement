@@ -3,11 +3,12 @@ message: "Please cite this repository for the generation code, and the separate 
 type: software
 title: "HDF5 generation scripts for entanglement spectra in disordered semimetals"
 authors:
-  - name: "vimohr"
+  - family-names: "Mohr"
+    given-names: "Vinícius"
 version: 0.1.0
 license: MIT
-repository-code: "https://github.com/vimohr/h5_generation_scripts"
-url: "https://github.com/vimohr/h5_generation_scripts"
+repository-code: "https://github.com/vimohr/dirty-weyl-entanglement"
+url: "https://github.com/vimohr/dirty-weyl-entanglement"
 abstract: >-
   Python and Eigen/OpenMP generators, archive verification, and source provenance
   for clean and disordered half-filling entanglement spectra. The original HDF5

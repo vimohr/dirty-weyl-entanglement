@@ -1,4 +1,7 @@
-# HDF5 generation scripts for entanglement spectra
+# Entanglement signatures of topological phase transitions in a dirty Weyl semimetal
+
+Data generation scripts accompanying the paper by Vinícius Mohr, Shunji
+Tsuchiya and András L. Szabó.
 
 This repository generates the HDF5 datasets used for the clean and disordered
 entanglement spectra. It includes the Python entry points, the Eigen/OpenMP
@@ -50,8 +53,8 @@ sudo apt-get install -y python3-venv cmake g++ libeigen3-dev
 Clone the repository, then install and build from its root:
 
 ~~~sh
-git clone https://github.com/vimohr/h5_generation_scripts.git
-cd h5_generation_scripts
+git clone https://github.com/vimohr/dirty-weyl-entanglement.git
+cd dirty-weyl-entanglement
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt

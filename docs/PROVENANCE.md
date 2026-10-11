@@ -95,8 +95,8 @@ repository. The provided examples and tests use small lattices and ensembles.
 
 The original 12 numerical tests passed with Python 3.11.14 / NumPy 2.2.5 / h5py 3.13.0
 and Python 3.14.2 / NumPy 2.5.3 / h5py 3.16.0. The local C++ build used
-GNU C++ 14.2.0. GitHub Actions builds and runs the suite on Ubuntu with Python
-3.10, 3.11 and 3.14 and checks the installed command-line entry points.
+GNU C++ 14.2.0. GitHub Actions is configured to build and run the suite on Ubuntu
+with Python 3.10, 3.11 and 3.14 and check the installed command-line entry points.
 
 The expanded 17-test suite also passed in a clean source copy with a fresh C++
 build and editable Python installation using Python 3.11.14 / NumPy 2.4.6 /

@@ -9,12 +9,12 @@ description = "Generation and provenance of disordered-semimetal entanglement sp
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
-authors = [{name = "vimohr"}]
+authors = [{name = "Vinícius Mohr"}]
 dependencies = ["numpy>=1.26,<3", "h5py>=3.10,<4"]
 
 [project.urls]
-Repository = "https://github.com/vimohr/h5_generation_scripts"
-Issues = "https://github.com/vimohr/h5_generation_scripts/issues"
+Repository = "https://github.com/vimohr/dirty-weyl-entanglement"
+Issues = "https://github.com/vimohr/dirty-weyl-entanglement/issues"
 
 [project.scripts]
 entanglement-1b = "generate_1b:main"

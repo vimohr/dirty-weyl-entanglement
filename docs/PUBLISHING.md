@@ -3,14 +3,27 @@
 This folder is an independent Git repository on branch
 `main`. Its Git history is separate from the surrounding master-project
 repository. Its public GitHub destination is
-[vimohr/h5_generation_scripts](https://github.com/vimohr/h5_generation_scripts).
+[vimohr/dirty-weyl-entanglement](https://github.com/vimohr/dirty-weyl-entanglement).
 The data will be uploaded to a separate Zenodo dataset record.
 
 ## GitHub code repository
 
 The code repository contains the generators, C++ backend, documentation, MIT
 license, citation metadata, source snapshots and validation workflow. HDF5 files
-and compiled binaries are excluded. To push later updates from this folder:
+and compiled binaries are excluded.
+
+For the first push, create an empty public GitHub repository named
+`dirty-weyl-entanglement` under `vimohr`. Leave GitHub's README, license and
+`.gitignore` initialization options unchecked, because those files are already
+committed locally. Run these commands inside the existing local
+`h5_generation_scripts` folder:
+
+~~~sh
+git remote add origin https://github.com/vimohr/dirty-weyl-entanglement.git
+git push -u origin main
+~~~
+
+The local folder may keep its existing name. To push later updates:
 
 ~~~sh
 git push -u origin main

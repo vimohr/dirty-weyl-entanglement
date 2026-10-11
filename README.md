@@ -9,10 +9,10 @@ Eigen/OpenMP backend and metadata for the four original entanglement HDF5 files.
 from the code; their DOI and download link will be added here when available.
 
 The generators focus on the paper's main topic, the entanglement spectrum.
-Generation scripts for the density of states (DOS) plots, including Fig. 5,
-are omitted because these use the standard kernel polynomial method
-(KPM; Appendix A); the KPM code is available on request. The Zenodo upload
-will include data for all paper figures, including the DOS results, to support
+The density of states (DOS) computations underlying Figs. 1(a) and 5 use
+standard kernel polynomial methods (KPM; Appendix A). The corresponding
+generation code is available on request. The Zenodo upload will include data
+for all paper figures, including these DOS results, to support
 reproducing every plot with simple postprocessing and plotting.
 
 ## Datasets

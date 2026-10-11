@@ -1,8 +1,9 @@
 # Model and data layouts
 
 This document and the archive manifest cover the four entanglement HDF5 files.
-Data for the other paper figures, including the DOS plots in Fig. 5, will be
-included in the same Zenodo upload; see the [repository scope](../README.md).
+Data for the other paper figures, including the DOS data underlying
+Figs. 1(a) and 5, will be included in the same Zenodo upload; see the
+[repository scope](../README.md).
 
 The clean Bloch Hamiltonian is
 

@@ -39,10 +39,11 @@ Create a dataset upload containing these original entanglement files:
 | `half_filling_data_20260628_161626.h5` | `half_filling_data_20260628_161626.h5` | 2,619,555,887 |
 
 Include the data for the remaining paper figures in the same record, including
-the DOS results in Fig. 5 obtained with the standard kernel polynomial method
-(KPM). The repository focuses on entanglement data generation; the KPM code
-is available on request. Add a short file-to-figure guide describing axes,
-units and any postprocessing needed to recreate the plots from the data.
+the DOS data underlying Figs. 1(a) and 5, computed using standard kernel
+polynomial methods (KPM). The repository focuses on entanglement data
+generation; the corresponding KPM generation code is available on request.
+Add a short file-to-figure guide describing axes, units and any postprocessing
+needed to recreate the plots from the data.
 
 Include `metadata/archive_manifest.json`, `metadata/SHA256SUMS` and `docs/DATA.md` with the data
 so the schema and checksums remain available independently of GitHub.
@@ -71,10 +72,11 @@ Suggested record description:
 > at L=60, a 10,000-realization disorder sweep at L=10 and m_z=0, its
 > two-spectrum W=0/W=2 extract, and a 10,000-realization mass sweep at
 > L=10 and W=2. The record also includes data for the remaining paper figures,
-> including the DOS plots in Fig. 5 computed with the standard kernel polynomial
-> method (KPM), to support reproducing every plot from the archived data.
-> The KPM code is available on request. The accompanying manifest lists SHA-256
-> hashes and dataset layouts for the four entanglement files.
+> including the DOS data underlying Figs. 1(a) and 5, computed using standard
+> kernel polynomial methods (KPM), to support reproducing every plot from the
+> archived data. The corresponding generation code is available on request.
+> The accompanying manifest lists SHA-256 hashes and dataset layouts for the
+> four entanglement files.
 > The linked code repository supplies entanglement generation commands and
 > documents the distinction between original archived samples and newly
 > seeded simulations.

@@ -2,7 +2,8 @@
 
 The code repository is
 [vimohr/dirty-weyl-entanglement](https://github.com/vimohr/dirty-weyl-entanglement).
-The data will be uploaded to a separate Zenodo dataset record.
+The data will be uploaded to a separate Zenodo dataset record:
+[10.5281/zenodo.23300020](https://doi.org/10.5281/zenodo.23300020).
 
 ## GitHub code repository
 
@@ -29,7 +30,7 @@ preparing the Zenodo record.
 
 ## Zenodo dataset record
 
-Create a dataset upload containing these original entanglement files:
+Prepare the dataset upload for this record with these original entanglement files:
 
 | File to upload | Location relative to the original research workspace | Bytes |
 | --- | --- | ---: |
@@ -90,10 +91,10 @@ by its DOI `10.48550/arXiv.2607.26660`.
 `CITATION.cff` identifies the software; the dataset should receive its own
 citation through the Zenodo record.
 
-After reserving or publishing the actual record, update the two null fields in
-`metadata/archived_data_manifest.json`, add the actual Zenodo link in `README.md`,
-and add the GitHub repository/release link to the Zenodo record.
-Commit these links and tag the release used for the data description.
+The dataset DOI and record URL are recorded in
+`metadata/archived_data_manifest.json`, with the DOI also linked in `README.md`
+and recorded in `CITATION.cff`. Add the GitHub repository/release link to the
+Zenodo record and tag the release used for the data description.
 Keep the dataset DOI separate from any future DOI for a software release.
 No placeholder DOI is used by the generation or verification code.
 

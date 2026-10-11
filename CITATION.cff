@@ -12,8 +12,7 @@ url: "https://github.com/vimohr/dirty-weyl-entanglement"
 abstract: >-
   Python and Eigen/OpenMP generators, archive verification, and source provenance
   for clean and disordered half-filling entanglement spectra. The original HDF5
-  datasets will be deposited separately on Zenodo; their DOI will be linked after
-  the dataset record is available.
+  datasets have a separate Zenodo dataset DOI: 10.5281/zenodo.23300020.
 keywords:
   - entanglement spectrum
   - Weyl semimetal

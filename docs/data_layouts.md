@@ -2,7 +2,8 @@
 
 This document and the archive manifest cover the four entanglement HDF5 files.
 Data for the other paper figures, including the DOS data underlying
-Figs. 1(a) and 5, will be included in the same Zenodo upload; see the
+Figs. 1(a) and 5, will be included in the same
+[Zenodo dataset record](https://doi.org/10.5281/zenodo.23300020); see the
 [repository scope](../README.md).
 
 ## Dataset filenames

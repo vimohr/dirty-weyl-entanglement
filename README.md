@@ -5,8 +5,8 @@ by Vinícius Mohr, Shunji
 Tsuchiya and András L. Szabó. The repository includes Python generators, an
 Eigen/OpenMP backend and metadata for the four original entanglement HDF5 files.
 
-**Zenodo data record: pending publication.** The HDF5 files will be uploaded separately
-from the code; their DOI and download link will be added here when available.
+**Zenodo dataset DOI:** [10.5281/zenodo.23300020](https://doi.org/10.5281/zenodo.23300020).
+The HDF5 data record is separate from this code repository.
 
 The generators focus on the paper's main topic, the entanglement spectrum.
 The density of states (DOS) computations underlying Figs. 1(a) and 5 use
@@ -101,7 +101,8 @@ Existing outputs are never overwritten; use `--output` for another calculation.
 
 ## Use the original archive
 
-Download the four entanglement HDF5 files listed above from Zenodo into `data/`
+Download the four entanglement HDF5 files listed above from
+[Zenodo](https://doi.org/10.5281/zenodo.23300020) into `data/`
 and verify them against the recorded checksums, layouts, parameter grids
 and attributes:
 
@@ -128,6 +129,7 @@ to pass original-archive verification.
 - [Archive manifest](metadata/archived_data_manifest.json) and [SHA256SUMS](metadata/SHA256SUMS): original-file checksums.
 
 The code is licensed under [MIT](LICENSE). [CITATION.cff](CITATION.cff) supplies
-software citation metadata. Cite the separate Zenodo dataset DOI when using the
+software citation metadata. Cite the separate
+[Zenodo dataset DOI](https://doi.org/10.5281/zenodo.23300020) when using the
 archived HDF5 data, and the [paper](https://arxiv.org/abs/2607.26660) for the
 scientific method.

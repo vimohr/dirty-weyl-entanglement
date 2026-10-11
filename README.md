@@ -3,10 +3,17 @@
 Data generation scripts accompanying [arXiv:2607.26660](https://arxiv.org/abs/2607.26660)
 by Vinícius Mohr, Shunji
 Tsuchiya and András L. Szabó. The repository includes Python generators, an
-Eigen/OpenMP backend and metadata for the four original HDF5 files.
+Eigen/OpenMP backend and metadata for the four original entanglement HDF5 files.
 
 **Zenodo data record: pending publication.** The HDF5 files will be uploaded separately
 from the code; their DOI and download link will be added here when available.
+
+The generators focus on the paper's main topic, the entanglement spectrum.
+Generation scripts for the density of states (DOS) plots, including Fig. 5,
+are omitted because these use the standard kernel polynomial method
+(KPM; Appendix A); the KPM code is available on request. The Zenodo upload
+will include data for all paper figures, including the DOS results, to support
+reproducing every plot with simple postprocessing and plotting.
 
 ## Datasets
 
@@ -91,8 +98,9 @@ Existing outputs are never overwritten; use `--output` for another calculation.
 
 ## Use the original archive
 
-Download the four Zenodo HDF5 files into `data/` and verify them against the
-recorded checksums, layouts, parameter grids and attributes:
+Download the four entanglement HDF5 files listed above from Zenodo into `data/`
+and verify them against the recorded checksums, layouts, parameter grids
+and attributes:
 
 ~~~sh
 python verify_archives.py --directory data

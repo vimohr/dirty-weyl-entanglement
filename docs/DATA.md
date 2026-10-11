@@ -1,5 +1,9 @@
 # Model and data layouts
 
+This document and the archive manifest cover the four entanglement HDF5 files.
+Data for the other paper figures, including the DOS plots in Fig. 5, will be
+included in the same Zenodo upload; see the [repository scope](../README.md).
+
 The clean Bloch Hamiltonian is
 
 ~~~text
@@ -94,7 +98,7 @@ seed, RNG policy, worker count, batch size, NumPy/h5py versions, model parameter
 and UTC completion time. They are gzip-compressed in realization/parameter
 chunks; compression does not change the stored numerical values.
 
-The original archive is identified by the hashes in
-[archive_manifest.json](../metadata/archive_manifest.json). It totals about
-5.90 GB in the four existing files; the raw `eigvals` array of each ensemble
-contains 3.28 GB of float64 values before compression.
+The four original entanglement files are identified by the hashes in
+[archive_manifest.json](../metadata/archive_manifest.json). Together they total
+about 5.90 GB; the raw `eigvals` array of each ensemble contains 3.28 GB of
+float64 values before compression.

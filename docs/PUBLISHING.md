@@ -29,7 +29,7 @@ preparing the Zenodo record.
 
 ## Zenodo dataset record
 
-Create a dataset upload containing these original files:
+Create a dataset upload containing these original entanglement files:
 
 | File to upload | Location relative to the original research workspace | Bytes |
 | --- | --- | ---: |
@@ -38,12 +38,19 @@ Create a dataset upload containing these original files:
 | `half_filling_data_20260519_134201.h5` | `half_filling_results/half_filling_data_20260519_134201.h5` | 3,283,288,520 |
 | `half_filling_data_20260628_161626.h5` | `half_filling_data_20260628_161626.h5` | 2,619,555,887 |
 
+Include the data for the remaining paper figures in the same record, including
+the DOS results in Fig. 5 obtained with the standard kernel polynomial method
+(KPM). The repository focuses on entanglement data generation; the KPM code
+is available on request. Add a short file-to-figure guide describing axes,
+units and any postprocessing needed to recreate the plots from the data.
+
 Include `metadata/archive_manifest.json`, `metadata/SHA256SUMS` and `docs/DATA.md` with the data
 so the schema and checksums remain available independently of GitHub.
 Preserve the original HDF5 bytes if using this manifest; recompressing or
 rewriting a file changes its hash.
 Upload each file directly under its basename so users can download all four into
-one directory. The total HDF5 payload is 5,904,592,519 bytes (about 5.90 GB).
+one directory. These four entanglement files total 5,904,592,519 bytes
+(about 5.90 GB); this excludes the additional figure data.
 If correcting the 1b spelling to `entanglement_spectrum_1b.h5`, also change that
 filename in the uploaded `SHA256SUMS`; the manifest verifier accepts either name.
 
@@ -63,8 +70,12 @@ Suggested record description:
 > entanglement cut. The record contains the clean momentum-resolved spectrum
 > at L=60, a 10,000-realization disorder sweep at L=10 and m_z=0, its
 > two-spectrum W=0/W=2 extract, and a 10,000-realization mass sweep at
-> L=10 and W=2. The accompanying manifest lists SHA-256 hashes and dataset
-> layouts. The linked code repository supplies generation commands and
+> L=10 and W=2. The record also includes data for the remaining paper figures,
+> including the DOS plots in Fig. 5 computed with the standard kernel polynomial
+> method (KPM), to support reproducing every plot from the archived data.
+> The KPM code is available on request. The accompanying manifest lists SHA-256
+> hashes and dataset layouts for the four entanglement files.
+> The linked code repository supplies entanglement generation commands and
 > documents the distinction between original archived samples and newly
 > seeded simulations.
 
@@ -92,7 +103,10 @@ python verify_archives.py --directory /path/to/the/four/files
 git ls-files '*.h5' '*.hdf5' '*.so' '*.dylib' '*.dll' '*.pdf'
 ~~~
 
-The first command must succeed; the second should print no files.
+The first command verifies the four entanglement files and must succeed;
+the second should print no files. These checks do not cover the additional
+figure data, which should have their own checksums and layout descriptions
+in the Zenodo record.
 For the original workspace layout, use
 `python verify_archives.py --directory .. --parent-layout`.
 `--structure-only` skips the whole-file size and hash checks while still checking

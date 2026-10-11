@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the clean momentum-resolved spectrum in the original HDF5 layout."""
+"""Generate the clean momentum-resolved entanglement spectrum in the original HDF5 layout."""
 
 import argparse
 

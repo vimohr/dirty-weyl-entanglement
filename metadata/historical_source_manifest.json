@@ -27,13 +27,13 @@
       "sha256": "c91b8a58c44c9c2a184cd24f39bfa00e8e42b31ae83f3d85260a7f69d2a3f5e2"
     },
     {
-      "file": "entanglement_backend_cdb8984.cpp",
+      "file": "disorder_sweep_backend_cdb8984.cpp",
       "source": "python_files/testvi_cpp.cpp",
       "revision": "cdb8984",
       "sha256": "e82110f0f24469304d28d942f3a35ea9c56c1d23ebfb8c1977646e2478f6bde1"
     },
     {
-      "file": "entanglement_backend_cdf3307.cpp",
+      "file": "mass_sweep_backend_cdf3307.cpp",
       "source": "python_files/testvi_cpp.cpp",
       "revision": "cdf3307",
       "sha256": "fe30ed652b8efadb6d0528db6c2f2ff87f8ef9b52d3b2ca026bea21fd9a0b2d1"

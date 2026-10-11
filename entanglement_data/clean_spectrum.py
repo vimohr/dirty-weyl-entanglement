@@ -51,7 +51,7 @@ def generate(size=60, mass=0.0, output="data/clean_entanglement_spectrum.h5"):
             for iy in range(size):
                 spectrum[iy + size * iz] = block_spectrum(size, iy, iz, mass, transform)
             print(f"kz blocks complete: {iz + 1}/{size}", flush=True)
-        model_attributes(handle, size, "generate_clean_spectrum.py")
+        model_attributes(handle, size, "generate_clean_entanglement_spectrum.py")
         handle.attrs["m_z"] = mass
         handle.attrs["axis_order"] = "row = iy + L*iz; columns = sorted occupations"
     return output

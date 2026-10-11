@@ -178,7 +178,7 @@ class GenerationTests(unittest.TestCase):
     def test_cli_runs_from_outside_the_repository(self):
         output = self.directory / "cli.h5"
         result = subprocess.run(
-            [sys.executable, str(ROOT / "generate_clean_spectrum.py"), "--size", "2",
+            [sys.executable, str(ROOT / "generate_clean_entanglement_spectrum.py"), "--size", "2",
              "--output", str(output)],
             cwd=self.directory, capture_output=True, text=True,
         )

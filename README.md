@@ -19,9 +19,9 @@ reproducing every plot with simple postprocessing and plotting.
 
 | Dataset filename | Command | Spectrum shape |
 | --- | --- | --- |
-| `clean_entanglement_spectrum.h5` | `python generate_clean_spectrum.py` | `(3600, 60)` |
+| `clean_entanglement_spectrum.h5` | `python generate_clean_entanglement_spectrum.py` | `(3600, 60)` |
 | `disorder_entanglement_ensemble.h5` | `python generate_entanglement_ensemble.py --preset w-sweep` | `(10000, 41, 1000)` |
-| `example_entanglement_spectra.h5` | `python extract_example_spectra.py` | `(2, 1000)` |
+| `example_entanglement_spectra.h5` | `python extract_example_entanglement_spectra.py` | `(2, 1000)` |
 | `mass_entanglement_ensemble.h5` | `python generate_entanglement_ensemble.py --preset m-sweep` | `(10000, 41, 1000)` |
 
 These descriptive names are the defaults for new calculations and the names
@@ -71,9 +71,9 @@ installed command names.
 These examples exercise all three generators with smaller lattices and ensembles:
 
 ~~~sh
-python generate_clean_spectrum.py --size 4 --output data/small_clean_spectrum.h5
+python generate_clean_entanglement_spectrum.py --size 4 --output data/small_clean_spectrum.h5
 python generate_entanglement_ensemble.py --preset w-sweep --size 4 --samples 2 --threads 2 --output data/small_disorder_ensemble.h5
-python extract_example_spectra.py --source data/small_disorder_ensemble.h5 --output data/small_example_spectra.h5
+python extract_example_entanglement_spectra.py --source data/small_disorder_ensemble.h5 --output data/small_example_spectra.h5
 python generate_entanglement_ensemble.py --preset m-sweep --size 4 --samples 2 --threads 2 --output data/small_mass_ensemble.h5
 ~~~
 
@@ -87,9 +87,9 @@ a compute server; choose `--threads` to fit the available memory.
 ~~~sh
 export OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1
-python generate_clean_spectrum.py
+python generate_clean_entanglement_spectrum.py
 python generate_entanglement_ensemble.py --preset w-sweep --samples 10000 --threads 8 --seed 1337
-python extract_example_spectra.py --source data/disorder_entanglement_ensemble.h5
+python extract_example_entanglement_spectra.py --source data/disorder_entanglement_ensemble.h5
 python generate_entanglement_ensemble.py --preset m-sweep --samples 10000 --threads 8 --seed 1337
 ~~~
 
@@ -112,7 +112,7 @@ python verify_archived_data.py --directory data
 To extract the exact spectra for panel 1c from the downloaded disorder ensemble:
 
 ~~~sh
-python extract_example_spectra.py --source data/disorder_entanglement_ensemble.h5 --output data/extracted_example_spectra.h5
+python extract_example_entanglement_spectra.py --source data/disorder_entanglement_ensemble.h5 --output data/extracted_example_spectra.h5
 ~~~
 
 This selects realization zero at `W=0` and `W=2`, without drawing new disorder.

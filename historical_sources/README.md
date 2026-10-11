@@ -15,8 +15,8 @@ and checksums are recorded in the
 | `disorder_sweep_cdb8984.py` | Older wrapper whose HDF5 format matches the original disorder sweep; its saved parameter grid differs from that run. |
 | `mass_sweep_cdf3307.py` | Git snapshot with the original 41-point W=2 mass grid and 10,000 realizations. |
 | `entanglement_backend_working_tree.cpp` | Working-tree C++ calculation used as the basis of the supported backend. |
-| `entanglement_backend_cdb8984.cpp` | Older fixed-mass C++ snapshot. |
-| `entanglement_backend_cdf3307.cpp` | C++ snapshot corresponding to the saved mass-sweep wrapper. |
+| `disorder_sweep_backend_cdb8984.cpp` | Older fixed-mass C++ snapshot corresponding to the saved disorder-sweep wrapper. |
+| `mass_sweep_backend_cdf3307.cpp` | C++ snapshot corresponding to the saved mass-sweep wrapper. |
 
 The old wrappers expect different C++ signatures and a library next to the
 script. Do not pair these historical wrappers with the new backend.

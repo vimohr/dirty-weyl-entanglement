@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract W=0 and W=2 at m_z=0 from a half-filling disorder sweep."""
+"""Extract example entanglement spectra at W=0 and W=2, m_z=0 from a disorder sweep."""
 
 import argparse
 

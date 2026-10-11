@@ -18,11 +18,11 @@ Repository = "https://github.com/vimohr/dirty-weyl-entanglement"
 Issues = "https://github.com/vimohr/dirty-weyl-entanglement/issues"
 
 [project.scripts]
-entanglement-clean = "generate_clean_spectrum:main"
+entanglement-clean = "generate_clean_entanglement_spectrum:main"
 entanglement-ensemble = "generate_entanglement_ensemble:main"
-entanglement-extract = "extract_example_spectra:main"
+entanglement-extract = "extract_example_entanglement_spectra:main"
 entanglement-verify = "verify_archived_data:main"
 
 [tool.setuptools]
 packages = ["entanglement_data"]
-py-modules = ["generate_clean_spectrum", "generate_entanglement_ensemble", "extract_example_spectra", "verify_archived_data"]
+py-modules = ["generate_clean_entanglement_spectrum", "generate_entanglement_ensemble", "extract_example_entanglement_spectra", "verify_archived_data"]

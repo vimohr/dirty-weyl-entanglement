@@ -14,7 +14,7 @@ included in `historical_sources/`.
 | Dataset | Evidence in the preserved sources |
 | --- | --- |
 | `clean_entanglement_spectrum.h5` at `L=60` | `historical_sources/clean_spectrum_calculation.py` contains the matching block calculation and HDF5 writer, both disabled in its current snapshot. |
-| `disorder_entanglement_ensemble.h5` | `historical_sources/disorder_sweep_cdb8984.py` has the matching HDF5 format, although its saved parameter grid differs; `entanglement_backend_cdb8984.cpp` supplies the historical fixed-mass calculation. The exact producing revision is not recorded. |
+| `disorder_entanglement_ensemble.h5` | `historical_sources/disorder_sweep_cdb8984.py` has the matching HDF5 format, although its saved parameter grid differs; `disorder_sweep_backend_cdb8984.cpp` supplies the historical fixed-mass calculation. The exact producing revision is not recorded. |
 | `example_entanglement_spectra.h5` | `historical_sources/spectrum_examples_and_plots.py` explicitly reads the original disorder-sweep filename and writes rows `[0,0]` and `[0,10]`. Both rows were verified against the original files. |
 | `mass_entanglement_ensemble.h5` | `historical_sources/mass_sweep_cdf3307.py` uses `Ns=10000`, `W=2`, and the matching 41-point mass grid. The exact producing revision is not recorded. |
 

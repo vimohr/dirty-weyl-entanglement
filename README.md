@@ -101,19 +101,25 @@ Existing outputs are never overwritten; use `--output` for another calculation.
 
 ## Use the original archive
 
-Download the four entanglement HDF5 files listed above from
-[Zenodo](https://doi.org/10.5281/zenodo.23300020) into `data/`
-and verify them against the recorded checksums, layouts, parameter grids
-and attributes:
+Download the dataset ZIP from
+[Zenodo](https://doi.org/10.5281/zenodo.23300020) and extract it. The extracted
+`weyl_entanglement_data` directory contains the four entanglement HDF5 files
+listed above and the `DoS_data/` subdirectory needed for plotting.
+
+From the repository root, verify the four HDF5 files against the recorded
+checksums, layouts, parameter grids and attributes. Replace
+`/path/to/weyl_entanglement_data` with the path to your extracted directory:
 
 ~~~sh
-python verify_archived_data.py --directory data
+python verify_archived_data.py --directory /path/to/weyl_entanglement_data
 ~~~
 
 To extract the exact spectra for panel 1c from the downloaded disorder ensemble:
 
 ~~~sh
-python extract_example_entanglement_spectra.py --source data/disorder_entanglement_ensemble.h5 --output data/extracted_example_spectra.h5
+python extract_example_entanglement_spectra.py \
+  --source /path/to/weyl_entanglement_data/disorder_entanglement_ensemble.h5 \
+  --output data/extracted_example_spectra.h5
 ~~~
 
 This selects realization zero at `W=0` and `W=2`, without drawing new disorder.
@@ -129,11 +135,14 @@ dependencies in your Python environment and run:
 
 ~~~sh
 python -m pip install -r plotting/requirements.txt
-python plotting/reconstruct_available_figures.py --root data --output data/reconstructed_figures
+python plotting/reconstruct_available_figures.py \
+  --root /path/to/weyl_entanglement_data \
+  --output reconstructed_figures
 ~~~
 
-Place the inputs in `data/` using the filenames listed in the
-[plotting guide](plotting/README.md), which match the generator defaults above.
+Use the extracted `weyl_entanglement_data` directory as `--root`. It contains
+the input filenames and `DoS_data/` layout described in the
+[plotting guide](plotting/README.md).
 The guide includes per-figure data fields, processing details and commands
 for selecting figures and validating the inputs. The script saves PNG plots
 and CSV tables; it reads the archived data directly and needs no C++ build.
